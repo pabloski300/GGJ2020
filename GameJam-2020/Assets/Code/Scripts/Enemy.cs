@@ -85,6 +85,7 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
 
     private void Die()
     {
+        GameManager.Instance.EnemyKilled();
         Destroy(this.gameObject);
     }
 

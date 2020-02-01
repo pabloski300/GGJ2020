@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{f11980b8-7001-442e-8fe5-148f7dffc606}">
+        <property name="name">
+            <value>Small-Big</value>
+        </property>
+        <relationship name="folder">
+            <destination>{4758a520-a484-47ce-bbf0-f5fc5ac88a21}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{4a2d694c-0afc-4108-b4ae-f8f4c8da7384}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{4a2d694c-0afc-4108-b4ae-f8f4c8da7384}">
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+    </object>
+</objects>

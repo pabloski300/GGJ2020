@@ -28,8 +28,19 @@ public class GameManager : MonoBehaviour
     private float secondsToStart;
     [BoxGroup("Config Fields"), SerializeField]
     private UIView startText;
+    [BoxGroup("Config Fields"), SerializeField]
+    private UIView endGameView;
+    [BoxGroup("Config Fields"), SerializeField]
+    private UIView titleView;
+    [BoxGroup("Config Fields"), SerializeField]
+    private UIView startView;
+    [BoxGroup("Config Fields"), SerializeField]
+    private UIView tutorialView;
 
-    enum GameState
+    private int enemyNumber = 0;
+    private float timeToWait;
+
+    public enum GameState
     {
         Menus,
         GameStarting,
@@ -37,6 +48,7 @@ public class GameManager : MonoBehaviour
         GameFinished
     }
     private GameState gameState;
+    public GameState CurrentGameState {get{return gameState;}}
 
     public static GameManager Instance;
     // Start is called before the first frame update
@@ -52,6 +64,7 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
         spawner = FindObjectOfType<Spawner>();
+        gameState = GameState.Menus;
     }
 
     public void StartGame()
@@ -64,12 +77,13 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            StartCoroutine(PlayGame());
+            PlayGame();
         }
     }
 
     public IEnumerator PlayTutorial()
     {
+        gameState = GameState.GameStarted;
         foreach (UIView repairText in repairTexts)
         {
             repairText.Show();
@@ -93,12 +107,55 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public IEnumerator PlayGame()
+    public void PlayGame()
     {
+        gameState = GameState.GameStarted;
         startText.Show();
-        yield return new WaitForSeconds(secondsToStart);
-        startText.Hide();
     }
+
+    public void StartSpawner(){
+        StartCoroutine(WaitForNextWave());
+    }
+
+    public void WaveStarted(float _timeToWait){
+        timeToWait = _timeToWait;
+    }
+
+    public void EnemySpawned() {
+        enemyNumber++;
+    }
+    public void EnemyKilled(){
+        enemyNumber--;
+        if(enemyNumber == 0){
+            StartCoroutine(WaitForNextWave());
+        }
+    }
+
+    public void TurretKilled(){
+        turretAmount--;
+        if(turretAmount == 0){
+            LoseGame();
+        }
+    }
+
+    public IEnumerator WaitForNextWave() {
+        yield return new WaitForSeconds(timeToWait);
+        StartCoroutine(spawner.Spawn());
+    }
+
+    public void LoseGame(){
+        gameState = GameState.GameFinished;
+        endGameView.Show();
+    }
+
+    public void RestartGame(){
+        endGameView.Hide();
+        titleView.Show();
+        startView.Show();
+        tutorialView.Show();
+        gameState = GameState.Menus;
+    }
+
     public void QuitGame()
     {
         Application.Quit();

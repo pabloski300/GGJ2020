@@ -138,7 +138,7 @@ MonoBehaviour:
   shootSpeed: 1
   timeToGetToPosition: 1
   projectileSpeed: 10
-  projectileDamage: 0
+  projectileDamage: 100
   moveSpeed: 1
   stopBeforeTimeToShoot: 0.237
   minMaxVerticalAxis: {x: 4.081192, y: 5.0267215}

@@ -45,6 +45,8 @@ public class Spawner : MonoBehaviour
 
         Wave currentWave = groupsAllowed[randomWave].GetWave();
 
+        GameManager.Instance.WaveStarted(currentWave.timeToNextWave);
+
         List<Enemy> enemiesShuffled = new List<Enemy>();
         yield return null;
 
@@ -64,6 +66,7 @@ public class Spawner : MonoBehaviour
         foreach (Enemy e in enemiesShuffled)
         {
             Enemy spawned = Instantiate(e);
+            GameManager.Instance.EnemySpawned();
             if (typeof(GroundStaticEnemy) == e.GetType())
             {
                 SpawnGround(spawned);
