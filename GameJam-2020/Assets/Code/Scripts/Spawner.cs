@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
     [SerializeField, MinMaxSlider(-20, 20, true), BoxGroup("AerialEnemy")]
     private Vector2 minMaxAerialWidthSpawn;
 
-    [SerializeField, MinMaxSlider(-20, -20, true), BoxGroup("GroundEnemy")]
+    [SerializeField, MinMaxSlider(-20, 20, true), BoxGroup("GroundEnemy")]
     private Vector2 minMaxGroundHeightSpawn;
     [SerializeField, MinMaxSlider(-20, 20, true), BoxGroup("GroundEnemy")]
     private Vector2 minMaxGroundWidthSpawn;
