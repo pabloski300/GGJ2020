@@ -26,7 +26,7 @@ public class Sound
     //Funciones encargadas de reproducir el sonido y si no existe la instancia crearla
     public void Play(Transform transform, Rigidbody rigidbody)
     {
-        if (instance.isValid())
+        if (instance.isValid() && !isPlaying())
         {
             instance.start();
             RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidbody);
@@ -35,7 +35,7 @@ public class Sound
 
     public void Play(Transform transform)
     {
-        if (instance.isValid())
+        if (instance.isValid() && !isPlaying())
         {
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
             instance.start();

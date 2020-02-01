@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         {
             rechargeText.Show();
         }
+        tutorialTurret.RemoveBullets(10);
         yield return new WaitUntil(() => tutorialTurret.AmmunitionRelative == 1);
         foreach (UIView rechargeText in rechargeTexts)
         {
@@ -149,6 +150,18 @@ public class GameManager : MonoBehaviour
     }
 
     public void RestartGame(){
+        timeToWait = 0;
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        foreach(Enemy e in  enemies){
+            e.Destroy();
+        }
+        PlayerController p = FindObjectOfType<PlayerController>();
+        Destroy(p.gameObject);
+        Turret[] turrets = FindObjectsOfType<Turret>();
+        foreach(Turret t in turrets){
+            t.Init();
+            turretAmount++;
+        }
         endGameView.Hide();
         titleView.Show();
         startView.Show();

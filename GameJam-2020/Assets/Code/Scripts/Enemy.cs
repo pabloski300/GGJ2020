@@ -22,6 +22,11 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
     [SerializeField, FoldoutGroup("Projectile")]
     protected IShootable projectilePrefab;
 
+    [SerializeField, FoldoutGroup("Sound")]
+    protected Sound shootSound;
+    [SerializeField, FoldoutGroup("Sound")]
+    protected Sound movementSound;
+
     protected bool inGame = false;
     public bool InGame { get { return inGame; } }
 
@@ -32,10 +37,13 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
 
     public virtual void Spawn(Vector3 startPosition, Vector3 endPosition)
     {
+        shootSound.Init();
+        movementSound.Init();
+        movementSound.Play(this.transform);
         currentHealth = maxHealth;
         transform.position = startPosition;
         timeToNextShoot = 1;
-        transform.DOMove(endPosition, timeToGetToPosition).SetEase(Ease.OutBack).OnComplete(() => inGame = true);
+        transform.DOMove(endPosition, timeToGetToPosition).SetEase(Ease.OutBack).OnComplete(() => { inGame = true;/*movementSound.Stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);*/});
         projectilePool = new List<IShootable>();
     }
 
@@ -56,8 +64,9 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
         }
     }
 
-    public void Shoot()
+    public virtual void Shoot()
     {
+        shootSound.Play(this.transform);
         timeToNextShoot = 1;
         IShootable projectile = projectilePool.FirstOrDefault();
         if (projectile == null)
@@ -85,6 +94,11 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
 
     private void Die()
     {
+        movementSound.Stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        foreach (Projectile p in projectilePool)
+        {
+            Destroy(p.gameObject);
+        }
         GameManager.Instance.EnemyKilled();
         Destroy(this.gameObject);
     }
@@ -92,5 +106,15 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
     public void RestoreProjectile(IShootable projectile)
     {
         projectilePool.Add(projectile);
+    }
+
+    public void Destroy()
+    {
+        movementSound.Stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        foreach (Projectile p in projectilePool)
+        {
+            Destroy(p.gameObject);
+        }
+        Destroy(this.gameObject);
     }
 }
