@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
     List<GameObject> items_to_carry;
     DistanceComparer comparer;
 
+    //Item spawn positions
+    public float drop_distance;
+
     void Start()
     {
         items_to_carry = new List<GameObject>();
@@ -94,8 +97,7 @@ public class PlayerController : MonoBehaviour
         comparer.position = transform.position;
         items_to_carry.Sort(comparer);
         obj = items_to_carry[0].transform;
-        items_to_carry.RemoveAt(0);
-
+        Debug.Log(obj.tag);
         if (obj.CompareTag("tower"))
         {
             switch (carried_obj)
@@ -143,7 +145,6 @@ public class PlayerController : MonoBehaviour
 
                 if (obj.GetComponent<Bullets>().destroyable)
                 {
-                    RemoveFromList(obj.gameObject);
                     Destroy(obj.gameObject);
                 }
                 break;
@@ -151,7 +152,6 @@ public class PlayerController : MonoBehaviour
                 SetCarried();
                 carried_obj = item.repair_kit;
 
-                RemoveFromList(obj.gameObject);
                 Destroy(obj.gameObject);
                 break;
         }
@@ -183,19 +183,29 @@ public class PlayerController : MonoBehaviour
         carrying_body.gameObject.SetActive(false);
         body.gameObject.SetActive(true);
 
-        carried_item.GetComponent<Collider2D>().enabled = true;
         //Remove later
-        carried_item.transform.localScale = new Vector3(0.05f, 0.05f, 0);
+        carried_item.transform.localScale = new Vector3(0.1f, 0.1f, 0);
 
-        for(int i = 0; i < bullet_packages; i++)
-            Instantiate(carried_item, body.position, Quaternion.identity);
+        for (int i = 0; i < bullet_packages; i++)
+        {
+            GameObject instance = Instantiate(carried_item, CalculateDropPosition(), Quaternion.identity);
+            instance.GetComponent<Collider2D>().enabled = true;
+        }
 
         Destroy(carried_item);
         carried_obj = item.none;
         bullet_packages = 0;
     }
 
-    //Change to nearest using a list instead of last entered
+    Vector2 CalculateDropPosition()
+    {
+        float angle = Random.Range(0, 359) * Mathf.Deg2Rad;
+        float x = transform.position.x + drop_distance * Mathf.Cos(angle);
+        float y = transform.position.y + drop_distance * Mathf.Sin(angle);
+
+        return new Vector2(x, y);
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         near_obj = true;
@@ -203,15 +213,10 @@ public class PlayerController : MonoBehaviour
         items_to_carry.Add(obj.gameObject);
     }
 
-    void OnTriggerExit2D()
+    void OnTriggerExit2D(Collider2D collider)
     {
-        near_obj = false;
+        items_to_carry.Remove(collider.gameObject);
+        near_obj = items_to_carry.Count != 0;
         obj = null;
-    }
-
-    public void RemoveFromList(GameObject go)
-    {
-        //Remove from list
-        if (items_to_carry.Contains(go.gameObject)) items_to_carry.Remove(go);
     }
 }

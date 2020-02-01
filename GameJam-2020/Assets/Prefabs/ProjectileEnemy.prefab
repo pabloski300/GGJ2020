@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3024823341014085741}
   - component: {fileID: 7013409914918201003}
   - component: {fileID: 3085011986524969199}
-  m_Layer: 11
-  m_Name: Projectile
+  m_Layer: 12
+  m_Name: ProjectileEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,9 +70,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 794162c9818232b48be8e07bc8f9ce69, type: 3}
-  m_Color: {r: 1, g: 0.1273585, b: 0.1273585, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 47ab2fa123149564f9647d5fd1efbdc7, type: 3}
+  m_Color: {r: 0, g: 1, b: 0.12460303, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,4 +97,4 @@ MonoBehaviour:
   maxTimeAlive: 2
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1280

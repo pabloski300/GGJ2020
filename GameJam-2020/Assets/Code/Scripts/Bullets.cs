@@ -7,7 +7,6 @@ public class Bullets : MonoBehaviour
     public int bullet_amount;
     public bool destroyable;
     public float time_to_live;
-    PlayerController controller;
 
     public Bullets(int bullet_amount)
     {
@@ -16,20 +15,16 @@ public class Bullets : MonoBehaviour
         time_to_live = 0;
     }    
 
-    void Start()
-    {
-        controller = FindObjectOfType<PlayerController>();
-    }
-
     void Update()
     {
-        time_to_live -= Time.deltaTime;
-
-        if (time_to_live <= 0 && destroyable)
+        if (destroyable)
         {
-            Debug.Log(controller);
-            controller.RemoveFromList(transform.gameObject);
-            Destroy(transform.gameObject);
+            time_to_live -= Time.deltaTime;
+
+            if (time_to_live < 0)
+            {
+                Destroy(transform.gameObject);
+            }
         }
     }
 }
