@@ -9,7 +9,7 @@ public class Turret : MonoBehaviour, IDamage
     private float maxHealth;
     private float currentHealth;
     [SerializeField]
-    private float maxAmmo;
+    private int maxAmmo;
     private float currentAmmo;
     [SerializeField]
     private float shootSpeed;
