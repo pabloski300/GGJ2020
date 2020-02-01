@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bank:/Master Bank.strings.bank
   m_EditorClassIdentifier: 
   Path: FMOD\JamFMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 637160582811641199
+  lastModified: 637161668942037003
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -53,15 +53,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -9087173361617540311}
-  - {fileID: 4937207294830362915}
+  - {fileID: 135321907806991513}
   EditorEvents:
   - {fileID: 1189076256406911711}
   MasterBanks:
-  - {fileID: 4937207294830362915}
+  - {fileID: 135321907806991513}
   StringsBanks:
   - {fileID: -9087173361617540311}
-  stringsBankWriteTime: 637160582811641199
+  stringsBankWriteTime: 637161668942037003
   cacheVersion: 3
+--- !u!114 &135321907806991513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master Bank.bank
+  m_EditorClassIdentifier: 
+  Path: D:\Documents\Jueguines\GGJ2020\Proyecto\GGJ2020\GameJam-2020\FMOD\JamFMOD\Build\Desktop\Master
+    Bank.bank
+  lastModified: 637161668942025786
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 13378
+  Exists: 1
 --- !u!114 &1189076256406911711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,7 +97,7 @@ MonoBehaviour:
   Path: event:/Folder/New Event
   guid: d627d8a3d89b3244b5cadbb239a770f8
   Banks:
-  - {fileID: 4937207294830362915}
+  - {fileID: 135321907806991513}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -124,4 +144,4 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 13378
-  Exists: 1
+  Exists: 0
