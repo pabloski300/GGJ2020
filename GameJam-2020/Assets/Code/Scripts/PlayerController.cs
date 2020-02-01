@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
     Transform body;
     GameObject carried_item;
 
+    Animator body_animator;
+    SpriteRenderer body_renderer;
+    bool facing_left;
+
     //Item List
     List<GameObject> items_to_carry;
     DistanceComparer comparer;
@@ -38,16 +42,22 @@ public class PlayerController : MonoBehaviour
     //Item spawn positions
     public float drop_distance;
 
+    bool repairing;
+
     void Start()
     {
         items_to_carry = new List<GameObject>();
         comparer = new DistanceComparer();
         body = transform.GetChild(0);
+        body_animator = body.GetComponent<Animator>();
+        body_renderer = body.GetComponent<SpriteRenderer>();
         carrying_body = transform.GetChild(1);
 
         near_obj = false;
+        repairing = false;
         main_down = false;
         secondary_down = false;
+        facing_left = false;
         obj = null;
     }
 
@@ -57,7 +67,10 @@ public class PlayerController : MonoBehaviour
         secondary_down = Input.GetKeyDown(KeyCode.X);
 
         Move();
-        if (near_obj && main_down) TryUse();
+
+        //End this
+        if (repairing && main_down) return;
+        else if (near_obj && main_down) TryUse();
         else if (secondary_down) Drop();
         main_down = false;
         secondary_down = false;
@@ -88,6 +101,14 @@ public class PlayerController : MonoBehaviour
             translation_y = -factor;
         }
 
+        if (x + y < 0) facing_left = true;
+        else if (x + y > 0) facing_left = false;
+
+        body_renderer.flipX = facing_left;
+
+        if (translation_x != 0 || translation_y != 0) body_animator.SetBool("Walking", true);
+        else body_animator.SetBool("Walking", false);
+
         transform.Translate(translation_x * speed * Time.deltaTime, translation_y * speed * Time.deltaTime, 0);
     }
 
@@ -97,7 +118,6 @@ public class PlayerController : MonoBehaviour
         comparer.position = transform.position;
         items_to_carry.Sort(comparer);
         obj = items_to_carry[0].transform;
-        Debug.Log(obj.tag);
         if (obj.CompareTag("tower"))
         {
             switch (carried_obj)
@@ -113,7 +133,8 @@ public class PlayerController : MonoBehaviour
                     body.gameObject.SetActive(true);
                     break;
                 case item.repair_kit:
-                    //Repair
+                    Debug.Log("Repairing Tower");
+                    repairing = true;
                     break;
             }
 
@@ -123,6 +144,11 @@ public class PlayerController : MonoBehaviour
 
         Pick();
 
+    }
+
+    void Repair()
+    {
+        
     }
 
     void Pick()
