@@ -22,6 +22,9 @@ public class FlyingAroundEnemy : Enemy
     [SerializeField, MinMaxSlider(3, 7, true), FoldoutGroup("Movement")]
     private Vector2 minMaxHorizontalAxis;
 
+    [SerializeField, FoldoutGroup("Animation")]
+    private GameObject canon;
+
 
     private WaitForSeconds wait;
 
@@ -30,6 +33,7 @@ public class FlyingAroundEnemy : Enemy
     private float horizontalAxis;
 
     private float currentPositionOnEllipse;
+    private Vector3 lastPosition;
 
     public override void Spawn(Vector3 startPosition, Vector3 endPosition)
     {
@@ -57,7 +61,15 @@ public class FlyingAroundEnemy : Enemy
             {
                 currentPositionOnEllipse += (Time.deltaTime * moveSpeed) % 360;
                 transform.position = new Vector3(centerOfEllipse.x + (horizontalAxis * Mathf.Cos(currentPositionOnEllipse)), centerOfEllipse.y + (verticalAxis * Mathf.Sin(currentPositionOnEllipse)), 0);
+                Vector3 dir = (transform.position - lastPosition).normalized;
+                transform.localScale = new Vector3(Mathf.Sign(dir.x) * 1, 1, 1);
+                if (currentTarget != null)
+                {
+                    canon.transform.right = Mathf.Sign(dir.x) * (currentTarget.transform.position - canon.transform.position).normalized;
+                }
+                lastPosition = transform.position;
             }
+
             base.Update();
         }
     }
