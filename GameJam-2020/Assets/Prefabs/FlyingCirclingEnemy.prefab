@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6956915925108341302}
   - component: {fileID: 6956915925108341303}
   - component: {fileID: 6956915925108341301}
-  - component: {fileID: 8458470791012828477}
+  - component: {fileID: -8875946128979456578}
   m_Layer: 9
-  m_Name: GroundStaticEnemy
+  m_Name: FlyingCirclingEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6956915925108341321}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.7764482, y: -3.4543114, z: 0}
+  m_LocalPosition: {x: 6.583378, y: 2.223677, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 21ba845f09f9c004ebd6acb6fb8ad528, type: 3}
-  m_Color: {r: 0.08962262, g: 0.9676672, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -109,7 +109,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8458470791012828477
+--- !u!114 &-8875946128979456578
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6956915925108341321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d507bb95912f9145bdd4661e31304c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 415dcc96f978a99439613f842be82c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -139,3 +139,7 @@ MonoBehaviour:
   timeToGetToPosition: 1
   projectileSpeed: 10
   projectileDamage: 0
+  moveSpeed: 1
+  stopBeforeTimeToShoot: 0.237
+  minMaxVerticalAxis: {x: 4.081192, y: 5.0267215}
+  minMaxHorizontalAxis: {x: 4.9239464, y: 5.828366}

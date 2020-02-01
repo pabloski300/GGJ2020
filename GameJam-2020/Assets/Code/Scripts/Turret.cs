@@ -9,9 +9,11 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     [SerializeField, FoldoutGroup("Stats")]
     private int maxHealth;
     private int currentHealth;
+    public float HealthRelative {get{return (float) currentHealth/ (float)maxHealth;}}
     [SerializeField, FoldoutGroup("Stats")]
     private int maxAmmo;
     private int currentAmmo;
+    public float AmmunitionRelative {get{return (float) currentAmmo/ (float)maxAmmo;}}
     [SerializeField, FoldoutGroup("Stats")]
     private float shootSpeed;
     [SerializeField, FoldoutGroup("Stats")]
