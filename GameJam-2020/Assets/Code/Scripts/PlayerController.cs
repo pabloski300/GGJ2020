@@ -19,9 +19,6 @@ public class PlayerController : MonoBehaviour
     enum item { none, bullets, repair_kit}
     item carried_obj;
 
-    public int bullet_packages = 0;
-    int MAX_CARRIED_BULLETS = 3;
-
     //Close objects
     bool near_obj;
     Transform obj;
@@ -31,6 +28,10 @@ public class PlayerController : MonoBehaviour
     Transform body;
     GameObject carried_item;
 
+    Animator body_animator;
+    SpriteRenderer body_renderer;
+    bool facing_left;
+
     //Item List
     List<GameObject> items_to_carry;
     DistanceComparer comparer;
@@ -38,16 +39,39 @@ public class PlayerController : MonoBehaviour
     //Item spawn positions
     public float drop_distance;
 
+    //Repair
+    bool repairing;
+    public float timeToRepair;
+    public float repairAmount;
+    float repair_counter;
+
+    //Bullets
+    public Sprite ammo_box;
+    public int bullet_packages = 0;
+    int MAX_CARRIED_BULLETS = 3;
+    public int bulletsPerPackage;
+    public float timeToLoad;
+    float load_counter;
+    bool loading_bullets;
+
     void Start()
     {
         items_to_carry = new List<GameObject>();
         comparer = new DistanceComparer();
         body = transform.GetChild(0);
+        body_animator = body.GetComponent<Animator>();
+        body_renderer = body.GetComponent<SpriteRenderer>();
         carrying_body = transform.GetChild(1);
 
+        repair_counter = timeToRepair;
+        load_counter = timeToLoad;
+
         near_obj = false;
+        repairing = false;
+        loading_bullets = false;
         main_down = false;
         secondary_down = false;
+        facing_left = false;
         obj = null;
     }
 
@@ -56,7 +80,31 @@ public class PlayerController : MonoBehaviour
         main_down = Input.GetKeyDown(KeyCode.Z);
         secondary_down = Input.GetKeyDown(KeyCode.X);
 
-        Move();
+        if (loading_bullets && load_counter >= 0) return;
+        else
+        {
+            loading_bullets = false;
+            load_counter = timeToLoad;
+
+            //Restore bullets
+            Debug.Log("Bullets restored");
+            Turret t = obj.GetComponent<Turret>();
+            t.Bullets(bullet_packages * bulletsPerPackage);
+            bullet_packages = 0;
+        }
+
+        if (repairing && main_down)
+        {
+            Repair();
+            return;
+        }
+        else
+        {
+            Move();
+            repairing = false;
+            repair_counter = timeToRepair;
+        }
+
         if (near_obj && main_down) TryUse();
         else if (secondary_down) Drop();
         main_down = false;
@@ -88,6 +136,14 @@ public class PlayerController : MonoBehaviour
             translation_y = -factor;
         }
 
+        if (x + y < 0) facing_left = true;
+        else if (x + y > 0) facing_left = false;
+
+        body_renderer.flipX = facing_left;
+
+        if (translation_x != 0 || translation_y != 0) body_animator.SetBool("Walking", true);
+        else body_animator.SetBool("Walking", false);
+
         transform.Translate(translation_x * speed * Time.deltaTime, translation_y * speed * Time.deltaTime, 0);
     }
 
@@ -97,23 +153,22 @@ public class PlayerController : MonoBehaviour
         comparer.position = transform.position;
         items_to_carry.Sort(comparer);
         obj = items_to_carry[0].transform;
-        Debug.Log(obj.tag);
         if (obj.CompareTag("tower"))
         {
             switch (carried_obj)
             {
                 case item.bullets:
-                    //Restore bullets
-                    Debug.Log("Bullets restored");
-                    bullet_packages = 0;
 
                     Destroy(carried_item);
                     carried_obj = item.none;
                     carrying_body.gameObject.SetActive(false);
                     body.gameObject.SetActive(true);
+
+                    loading_bullets = true;
                     break;
                 case item.repair_kit:
-                    //Repair
+                    Debug.Log("Repairing Tower");
+                    repairing = true;
                     break;
             }
 
@@ -123,6 +178,20 @@ public class PlayerController : MonoBehaviour
 
         Pick();
 
+    }
+
+    void Repair()
+    {
+        repair_counter -= Time.deltaTime;
+
+        if(repair_counter <= 0)
+        {
+            Turret t = obj.GetComponent<Turret>();
+            t.Repair(repairAmount);
+            repair_counter = timeToRepair;
+
+            if (t.HealthRelative == 1) repairing = false;
+        }
     }
 
     void Pick()
@@ -162,6 +231,9 @@ public class PlayerController : MonoBehaviour
     void SetCarried()
     {
         carried_item = Instantiate(obj).gameObject;
+        if (obj.CompareTag("bullets"))
+            carried_item.GetComponent<SpriteRenderer>().sprite = ammo_box;
+
         carried_item.GetComponent<Collider2D>().enabled = false;
         carried_item.GetComponent<SpriteRenderer>().sortingOrder = carrying_body.GetComponent<SpriteRenderer>().sortingOrder + 1;
         carried_item.transform.SetParent(carrying_body);
@@ -182,9 +254,6 @@ public class PlayerController : MonoBehaviour
         //Set item down
         carrying_body.gameObject.SetActive(false);
         body.gameObject.SetActive(true);
-
-        //Remove later
-        carried_item.transform.localScale = new Vector3(0.1f, 0.1f, 0);
 
         for (int i = 0; i < bullet_packages; i++)
         {
