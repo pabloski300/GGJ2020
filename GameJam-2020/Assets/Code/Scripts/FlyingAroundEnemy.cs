@@ -25,29 +25,32 @@ public class FlyingAroundEnemy : Enemy
 
     public override void Spawn(Vector3 startPosition, Vector3 endPosition)
     {
-        centerOfEllipse = new Vector2(endPosition.x,endPosition.y);
-        verticalAxis = Random.Range(minMaxVerticalAxis.x,minMaxVerticalAxis.y);
-        horizontalAxis = Random.Range(minMaxHorizontalAxis.x,minMaxHorizontalAxis.y);
-        currentPositionOnEllipse = Random.Range(0,360);
+        centerOfEllipse = new Vector2(endPosition.x, endPosition.y);
+        verticalAxis = Random.Range(minMaxVerticalAxis.x, minMaxVerticalAxis.y);
+        horizontalAxis = Random.Range(minMaxHorizontalAxis.x, minMaxHorizontalAxis.y);
+        currentPositionOnEllipse = Random.Range(0, 360);
         endPosition = new Vector3(centerOfEllipse.x + (horizontalAxis * Mathf.Cos(currentPositionOnEllipse)), centerOfEllipse.y + (verticalAxis * Mathf.Sin(currentPositionOnEllipse)), 0);
         base.Spawn(startPosition, endPosition);
     }
 
     protected override void Update()
     {
-        if (timeToNextShoot > 0 && currentTarget == null && inGame)
+        if (GameManager.Instance.CurrentGameState != GameManager.GameState.GameFinished)
         {
-            TakeAim();
-        }
+            if (timeToNextShoot > 0 && currentTarget == null && inGame)
+            {
+                TakeAim();
+            }
 
-        shooting = timeToNextShoot < stopBeforeTimeToShoot;
+            shooting = timeToNextShoot < stopBeforeTimeToShoot;
 
-        if (inGame && !shooting)
-        {
-            currentPositionOnEllipse += (Time.deltaTime * moveSpeed) % 360;
-            transform.position = new Vector3(centerOfEllipse.x + (horizontalAxis * Mathf.Cos(currentPositionOnEllipse)), centerOfEllipse.y + (verticalAxis * Mathf.Sin(currentPositionOnEllipse)), 0);
+            if (inGame && !shooting)
+            {
+                currentPositionOnEllipse += (Time.deltaTime * moveSpeed) % 360;
+                transform.position = new Vector3(centerOfEllipse.x + (horizontalAxis * Mathf.Cos(currentPositionOnEllipse)), centerOfEllipse.y + (verticalAxis * Mathf.Sin(currentPositionOnEllipse)), 0);
+            }
+            base.Update();
         }
-        base.Update();
     }
 
     private void TakeAim()

@@ -29,7 +29,10 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Config Fields"), SerializeField]
     private UIView startText;
 
-    enum GameState
+    private int enemyNumber = 0;
+    private float timeToWait;
+
+    public enum GameState
     {
         Menus,
         GameStarting,
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
         GameFinished
     }
     private GameState gameState;
+    public GameState CurrentGameState {get{return gameState;}}
 
     public static GameManager Instance;
     // Start is called before the first frame update
@@ -98,7 +102,39 @@ public class GameManager : MonoBehaviour
         startText.Show();
         yield return new WaitForSeconds(secondsToStart);
         startText.Hide();
+        StartCoroutine(WaitForNextWave());
     }
+
+    public void WaveStarted(float _timeToWait){
+        timeToWait = _timeToWait;
+    }
+
+    public void EnemySpawned() {
+        enemyNumber++;
+    }
+    public void EnemyKilled(){
+        enemyNumber--;
+        if(enemyNumber == 0){
+            StartCoroutine(WaitForNextWave());
+        }
+    }
+
+    public void TurretKilled(){
+        turretAmount--;
+        if(turretAmount == 0){
+            LoseGame();
+        }
+    }
+
+    public IEnumerator WaitForNextWave() {
+        yield return new WaitForSeconds(timeToWait);
+        spawner.Spawn();
+    }
+
+    public void LoseGame(){
+        gameState = GameState.GameFinished;
+    }
+
     public void QuitGame()
     {
         Application.Quit();

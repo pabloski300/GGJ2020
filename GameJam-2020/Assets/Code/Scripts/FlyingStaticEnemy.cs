@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class FlyingStaticEnemy : Enemy {
     protected override void Update() {
+        if(GameManager.Instance.CurrentGameState != GameManager.GameState.GameFinished){
         if(timeToNextShoot > 0 && currentTarget == null && inGame){
             TakeAim();
         }
         base.Update();
+        }
     }
 
     private void TakeAim(){

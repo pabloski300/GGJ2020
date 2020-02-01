@@ -37,6 +37,9 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     [SerializeField, FoldoutGroup("Projectile")]
     private IShootable projectilePrefab;
 
+    [EnumToggleButtons, FoldoutGroup("Sounds")]
+    private Sound shootSound;
+
     private Enemy currentTarget;
     private bool alive = true;
     private List<Enemy> possibleTargets;
@@ -55,6 +58,7 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     // Update is called once per frame
     void Update()
     {
+        if(alive){
         if (timeToNextShoot > (1 - timeTakingAim))
             TakeAim();
 
@@ -65,6 +69,7 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
 
         if (currentTarget)
             Debug.DrawLine(this.transform.position, currentTarget.transform.position, Color.red);
+        }
     }
 
     private void TakeAim()
@@ -106,8 +111,9 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
 
     void Die()
     {
+        GameManager.Instance.TurretKilled();
         alive = true;
-        this.gameObject.SetActive(false);
+        // this.gameObject.SetActive(false);
     }
 
     public void Repair(float repairAmount){
