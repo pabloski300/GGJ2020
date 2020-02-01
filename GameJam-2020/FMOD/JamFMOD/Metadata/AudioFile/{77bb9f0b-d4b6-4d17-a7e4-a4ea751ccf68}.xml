@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{77bb9f0b-d4b6-4d17-a7e4-a4ea751ccf68}">
+        <property name="assetPath">
+            <value>TD_Enemy_Jet_Shoot_03.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>0.47049999999999997</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{d6a76e18-bc58-4c11-80e3-56c428795893}</destination>
+        </relationship>
+    </object>
+</objects>
