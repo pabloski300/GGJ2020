@@ -1,39 +1,58 @@
 using UnityEngine;
 
-public class Projectile : MonoBehaviour {
+public class Projectile : MonoBehaviour, IShootable
+{
     private float speed;
     private Vector3 direction;
-    private float damageAmount;
-    private Turret turret;
+    private int damageAmount;
+    private IShooter shooter;
     [SerializeField]
     private float maxTimeAlive;
     private float currentTimeAlive = 0;
+    [SerializeField]
+    private LayerMask collisionLayers;
+    private IDamage goingToHit;
 
-    public void Shoot(float _speed, Vector3 _dir, float _damageAmount, Turret _t){
+    public void Shoot(float _speed, Vector3 _dir, int _damageAmount, IShooter _shooter, Vector3 _shootPosition)
+    {
         speed = _speed;
         direction = _dir;
         damageAmount = _damageAmount;
-        turret = _t;
-        this.transform.position = turret.transform.position;
+        shooter = _shooter;
+        this.transform.position = _shootPosition;
         this.gameObject.SetActive(true);
     }
 
-    private void Update(){
-        this.transform.Translate(direction*speed*Time.deltaTime, Space.World);
-        if(currentTimeAlive >= maxTimeAlive) {
+    private void Update()
+    {
+        if(goingToHit != null){
+            goingToHit.ReceiveDamage(damageAmount);
             Die();
+            return;
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, direction, speed * Time.deltaTime, collisionLayers);
+        if(hit.collider != null){
+            this.transform.position = hit.point;
+            this.goingToHit = hit.collider.GetComponent<IDamage>();
         }else{
+            this.transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        }
+        if (currentTimeAlive >= maxTimeAlive)
+        {
+            Die();
+        }
+        else
+        {
             currentTimeAlive += Time.deltaTime;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        other.gameObject.GetComponent<IDamage>().ReceiveDamage(damageAmount);
-        Die();
-    }
-
-    private void Die() {
+    private void Die()
+    {
+        goingToHit = null;
         currentTimeAlive = 0;
-            turret.RestoreBullet(this);
+        this.gameObject.SetActive(false);
+        shooter.RestoreProjectile(this);
     }
 }
