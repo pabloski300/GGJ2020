@@ -14,13 +14,13 @@ public class GameManager : MonoBehaviour
     private Transform spawnPosition;
 
     private Spawner spawner;
-    private bool tutorial;
+    private bool tutorial = true;
     public bool Tutorial { set { tutorial = value; } }
 
     [BoxGroup("Tutorial"), SerializeField]
-    private UIView repairText;
+    private List<UIView> repairTexts;
     [BoxGroup("Tutorial"), SerializeField]
-    private UIView rechargeText;
+    private List<UIView> rechargeTexts;
     [BoxGroup("Tutorial"), SerializeField]
     private Turret tutorialTurret;
 
@@ -70,14 +70,26 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator PlayTutorial()
     {
-        repairText.Show();
+        foreach (UIView repairText in repairTexts)
+        {
+            repairText.Show();
+        }
         tutorialTurret.ReceiveDamage(50);
         yield return new WaitUntil(() => tutorialTurret.HealthRelative == 1);
-        repairText.Hide();
+        foreach (UIView repairText in repairTexts)
+        {
+            repairText.Hide();
+        }
 
-        rechargeText.Show();
+        foreach (UIView rechargeText in rechargeTexts)
+        {
+            rechargeText.Show();
+        }
         yield return new WaitUntil(() => tutorialTurret.AmmunitionRelative == 1);
-        rechargeText.Hide();
+        foreach (UIView rechargeText in rechargeTexts)
+        {
+            rechargeText.Hide();
+        }
 
     }
 

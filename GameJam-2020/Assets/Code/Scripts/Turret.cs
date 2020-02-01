@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Turret : SerializedMonoBehaviour, IDamage, IShooter
 {
     [SerializeField, FoldoutGroup("Stats")]
-    private int maxHealth;
-    private int currentHealth;
+    private float maxHealth;
+    private float currentHealth;
     public float HealthRelative {get{return (float) currentHealth/ (float)maxHealth;}}
+    public UnityEvent<float> changeHealthEvent;
     [SerializeField, FoldoutGroup("Stats")]
     private int maxAmmo;
     private int currentAmmo;
     public float AmmunitionRelative {get{return (float) currentAmmo/ (float)maxAmmo;}}
+    public UnityEvent<float> changeAmmoEvent;
     [SerializeField, FoldoutGroup("Stats")]
     private float shootSpeed;
     [SerializeField, FoldoutGroup("Stats")]
@@ -74,6 +77,7 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     private void Shoot()
     {
         currentAmmo--;
+        changeAmmoEvent.Invoke(AmmunitionRelative);
         timeToNextShoot = 1;
         IShootable projectile = projectilePool.FirstOrDefault();
         if(projectile == null){
@@ -93,6 +97,7 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     public void ReceiveDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        changeHealthEvent.Invoke(HealthRelative);
         if (currentHealth <= 0)
         {
             Die();
@@ -103,5 +108,17 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     {
         alive = true;
         this.gameObject.SetActive(false);
+    }
+
+    public void Repair(float repairAmount){
+        currentHealth += repairAmount;
+        currentHealth = Mathf.Min(currentHealth,maxHealth);
+        changeHealthEvent.Invoke(HealthRelative);
+    }
+
+    public void Bullets(int ammo){
+        currentAmmo += ammo;
+        currentAmmo = Mathf.Min(currentAmmo,maxAmmo);
+        changeAmmoEvent.Invoke(AmmunitionRelative);
     }
 }
