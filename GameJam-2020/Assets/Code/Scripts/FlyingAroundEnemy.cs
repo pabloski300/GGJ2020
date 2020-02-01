@@ -55,7 +55,7 @@ public class FlyingAroundEnemy : Enemy
 
     private void TakeAim()
     {
-        possibleTargets = FindObjectsOfType<Turret>().ToList();
+        possibleTargets = (from x in FindObjectsOfType<Turret>() where x.Alive select x).ToList();
         if (possibleTargets != null && possibleTargets.Count > 0)
         {
             int x = Random.Range(0, possibleTargets.Count);

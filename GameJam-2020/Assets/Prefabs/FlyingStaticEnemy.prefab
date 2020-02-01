@@ -138,4 +138,4 @@ MonoBehaviour:
   shootSpeed: 1
   timeToGetToPosition: 1
   projectileSpeed: 10
-  projectileDamage: 0
+  projectileDamage: 100
