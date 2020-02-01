@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{9aeaa2d3-6e16-4fb7-aefa-61fc9120e109}">
+        <property name="name">
+            <value>ROF</value>
+        </property>
+        <relationship name="folder">
+            <destination>{4758a520-a484-47ce-bbf0-f5fc5ac88a21}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{7f613cda-4a6e-4828-84d1-29e930a53e5b}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{7f613cda-4a6e-4828-84d1-29e930a53e5b}">
+        <property name="maximum">
+            <value>1000</value>
+        </property>
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+    </object>
+</objects>
