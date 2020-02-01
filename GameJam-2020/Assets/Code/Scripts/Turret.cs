@@ -1,33 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Turret : MonoBehaviour, IDamage
+public class Turret : SerializedMonoBehaviour, IDamage, IShooter
 {
-    [SerializeField]
+    [SerializeField, FoldoutGroup("Stats")]
     private float maxHealth;
     private float currentHealth;
-    [SerializeField]
+    public float HealthRelative {get{return (float) currentHealth/ (float)maxHealth;}}
+    public UnityEvent<float> changeHealthEvent;
+    [SerializeField, FoldoutGroup("Stats")]
     private int maxAmmo;
-    private float currentAmmo;
-    [SerializeField]
+    private int currentAmmo;
+    public float AmmunitionRelative {get{return (float) currentAmmo/ (float)maxAmmo;}}
+    public UnityEvent<float> changeAmmoEvent;
+    [SerializeField, FoldoutGroup("Stats")]
     private float shootSpeed;
-    private float timeToNextShoot;
-    [SerializeField]
-    private float timeTakingAim;
-    [SerializeField]
-    private float projectileSpeed;
-    [SerializeField]
-    private float projectileDamage;
-    [SerializeField]
+    [SerializeField, FoldoutGroup("Stats")]
     private float maxCartridges;
-    [SerializeField]
-    private GameObject projectilePrefab;
+    private float timeToNextShoot;
+    [SerializeField, PropertyRange(0,1), FoldoutGroup("Stats")]
+    private float timeTakingAim;
+    [EnumToggleButtons, FoldoutGroup("Stats")]
+    public Side side;
+    public enum Side {
+        Top, Bottom
+    }
+
+    [SerializeField, FoldoutGroup("Projectile")]
+    private float projectileSpeed;
+    [SerializeField, FoldoutGroup("Projectile")]
+    private int projectileDamage;
+    [SerializeField, FoldoutGroup("Projectile")]
+    private IShootable projectilePrefab;
+
+    [EnumToggleButtons, FoldoutGroup("Sounds")]
+    private Sound shootSound;
+
     private Enemy currentTarget;
     private bool alive = true;
     private List<Enemy> possibleTargets;
-    private List<Projectile> projectilePool;
+    private List<IShootable> projectilePool;
 
     // Start is called before the first frame update
     void Start()
@@ -36,52 +52,57 @@ public class Turret : MonoBehaviour, IDamage
         currentAmmo = maxAmmo;
         timeToNextShoot = 1;
         currentTarget = null;
-        projectilePool = new List<Projectile>();
+        projectilePool = new List<IShootable>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(alive){
         if (timeToNextShoot > (1 - timeTakingAim))
             TakeAim();
 
-        if (timeToNextShoot > 0 && currentAmmo > 0)
+        if (timeToNextShoot > 0 && currentAmmo > 0 && currentTarget != null)
             timeToNextShoot -= Time.deltaTime * shootSpeed;
-        else if(currentAmmo > 0)
+        else if(currentAmmo > 0 && currentTarget != null)
             Shoot();
 
         if (currentTarget)
-            Debug.DrawRay(this.transform.position, currentTarget.transform.position, Color.red);
+            Debug.DrawLine(this.transform.position, currentTarget.transform.position, Color.red);
+        }
     }
 
     private void TakeAim()
     {
-        possibleTargets = FindObjectsOfType<Enemy>().ToList();
-        currentTarget = possibleTargets.OrderBy(o => (o.transform.position - this.transform.position).magnitude).ToList()[0];
+        possibleTargets = (from x in FindObjectsOfType<Enemy>() where x.InGame select x).ToList();
+        if(possibleTargets != null && possibleTargets.Count > 0)
+            currentTarget = possibleTargets.OrderBy(o => (o.transform.position - this.transform.position).magnitude).ToList()[0];
     }
 
     private void Shoot()
     {
         currentAmmo--;
+        changeAmmoEvent.Invoke(AmmunitionRelative);
         timeToNextShoot = 1;
-        Projectile projectile = projectilePool.FirstOrDefault();
+        IShootable projectile = projectilePool.FirstOrDefault();
         if(projectile == null){
-            Projectile newProjectile = Instantiate(projectilePrefab, this.transform.position, Quaternion.identity).GetComponent<Projectile>();
-            newProjectile.Shoot(projectileSpeed,currentTarget.transform.position - this.transform.position,projectileDamage, this);
+            IShootable newProjectile = ((IShootable)Instantiate((Object)projectilePrefab, this.transform.position, Quaternion.identity));
+            newProjectile.Shoot(projectileSpeed,currentTarget.transform.position - this.transform.position,projectileDamage, this, transform.position);
         }else{
             projectilePool.Remove(projectile);
-            projectile.Shoot(projectileSpeed,currentTarget.transform.position - this.transform.position,projectileDamage, this);
+            projectile.Shoot(projectileSpeed,currentTarget.transform.position - this.transform.position,projectileDamage, this, transform.position);
         }
+        currentTarget = null;
     }
 
-    public void RestoreBullet(Projectile projectile){
-        projectile.gameObject.SetActive(false);
+    public void RestoreProjectile(IShootable projectile){
         projectilePool.Add(projectile);
     }
 
-    public void ReceiveDamage(float damageAmount)
+    public void ReceiveDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        changeHealthEvent.Invoke(HealthRelative);
         if (currentHealth <= 0)
         {
             Die();
@@ -90,6 +111,20 @@ public class Turret : MonoBehaviour, IDamage
 
     void Die()
     {
+        GameManager.Instance.TurretKilled();
         alive = true;
+        // this.gameObject.SetActive(false);
+    }
+
+    public void Repair(float repairAmount){
+        currentHealth += repairAmount;
+        currentHealth = Mathf.Min(currentHealth,maxHealth);
+        changeHealthEvent.Invoke(HealthRelative);
+    }
+
+    public void Bullets(int ammo){
+        currentAmmo += ammo;
+        currentAmmo = Mathf.Min(currentAmmo,maxAmmo);
+        changeAmmoEvent.Invoke(AmmunitionRelative);
     }
 }
