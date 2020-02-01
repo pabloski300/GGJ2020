@@ -211,8 +211,8 @@ MonoBehaviour:
   repairAmount: 5
   ammo_box: {fileID: 21300000, guid: 7b2bc75a74ecf054cb2025b348d1661b, type: 3}
   bullet_packages: 0
-  bulletsPerPackage: 0
-  timeToLoad: 0
+  bulletsPerPackage: 10
+  timeToLoad: 1
 --- !u!50 &8915070763730282790
 Rigidbody2D:
   serializedVersion: 4

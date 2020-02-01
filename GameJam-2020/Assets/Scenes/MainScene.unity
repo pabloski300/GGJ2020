@@ -159,12 +159,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 83969953317594516, guid: 0fc87a67820fafb4e89ffcfbe89bdf2e,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 83969953317594516, guid: 0fc87a67820fafb4e89ffcfbe89bdf2e,
-        type: 3}
     - target: {fileID: 4446133326307562893, guid: 0fc87a67820fafb4e89ffcfbe89bdf2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -603,9 +597,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1319762713}
   - component: {fileID: 1319762712}
-  - component: {fileID: 1319762711}
   - component: {fileID: 1319762715}
   - component: {fileID: 1319762714}
+  - component: {fileID: 1319762711}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -613,14 +607,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1319762711
-AudioListener:
+--- !u!114 &1319762711
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319762710}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!20 &1319762712
 Camera:
   m_ObjectHideFlags: 0
@@ -845,7 +844,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000006f7ee72ceb2ab6d17103e751
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -1054,6 +1053,12 @@ PrefabInstance:
       propertyPath: tutorialTurret
       value: 
       objectReference: {fileID: 1271494156}
+    - target: {fileID: 6932043438917478700, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8915070763730282784, guid: f28a767feffeb7a4fb71dfd69a8a7fc0,
+        type: 3}
     - target: {fileID: 6932043438917478701, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
       propertyPath: m_LocalPosition.x

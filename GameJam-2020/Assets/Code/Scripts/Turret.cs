@@ -25,6 +25,8 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     [SerializeField, PropertyRange(0, 1), FoldoutGroup("Stats")]
     private float timeTakingAim;
     [EnumToggleButtons, FoldoutGroup("Stats")]
+    public Transform shootPoint;
+    [EnumToggleButtons, FoldoutGroup("Stats")]
     public Side side;
     public enum Side
     {
@@ -139,12 +141,12 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
         if (projectile == null)
         {
             IShootable newProjectile = ((IShootable)Instantiate((Object)projectilePrefab, this.transform.position, Quaternion.identity));
-            newProjectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, transform.position);
+            newProjectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, shootPoint.position);
         }
         else
         {
             projectilePool.Remove(projectile);
-            projectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, transform.position);
+            projectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, shootPoint.position);
         }
         currentTarget = null;
     }

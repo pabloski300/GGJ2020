@@ -25,17 +25,21 @@ public class Projectile : MonoBehaviour, IShootable
 
     private void Update()
     {
-        if(goingToHit != null){
+        if (goingToHit != null)
+        {
             goingToHit.ReceiveDamage(damageAmount);
             Die();
             return;
         }
 
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position, direction, speed * Time.deltaTime, collisionLayers);
-        if(hit.collider != null){
+        if (hit.collider != null)
+        {
             this.transform.position = hit.point;
             this.goingToHit = hit.collider.GetComponent<IDamage>();
-        }else{
+        }
+        else
+        {
             this.transform.Translate(direction * speed * Time.deltaTime, Space.World);
         }
         if (currentTimeAlive >= maxTimeAlive)
@@ -53,6 +57,13 @@ public class Projectile : MonoBehaviour, IShootable
         goingToHit = null;
         currentTimeAlive = 0;
         this.gameObject.SetActive(false);
-        shooter.RestoreProjectile(this);
+        if (shooter != null)
+        {
+            shooter.RestoreProjectile(this);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

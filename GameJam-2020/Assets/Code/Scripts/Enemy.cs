@@ -14,6 +14,8 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
     protected float timeToNextShoot;
     [SerializeField, FoldoutGroup("Stats")]
     protected float timeToGetToPosition;
+    [SerializeField, FoldoutGroup("Stats")]
+    protected Transform shootPoint;
 
     [SerializeField, FoldoutGroup("Projectile")]
     protected float projectileSpeed;
@@ -26,6 +28,8 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
     protected Sound shootSound;
     [SerializeField, FoldoutGroup("Sound")]
     protected Sound movementSound;
+
+
 
     protected bool inGame = false;
     public bool InGame { get { return inGame; } }
@@ -69,15 +73,15 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
         shootSound.Play(this.transform);
         timeToNextShoot = 1;
         IShootable projectile = projectilePool.FirstOrDefault();
-        if (projectile == null)
+        if (projectile == null && currentTarget != null)
         {
             IShootable newProjectile = ((IShootable)Instantiate((Object)projectilePrefab, this.transform.position, Quaternion.identity));
-            newProjectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, transform.position);
+            newProjectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, shootPoint.position);
         }
-        else
+        else if(currentTarget != null)
         {
             projectilePool.Remove(projectile);
-            projectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, transform.position);
+            projectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, shootPoint.position);
         }
         currentTarget = null;
     }

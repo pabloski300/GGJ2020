@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
         secondary_down = Input.GetKeyDown(KeyCode.X);
 
         if (loading_bullets && load_counter >= 0) return;
-        else
+        else if(loading_bullets)
         {
             loading_bullets = false;
             load_counter = timeToLoad;
@@ -98,15 +98,15 @@ public class PlayerController : MonoBehaviour
             Repair();
             return;
         }
-        else
+        else if(repairing)
         {
-            Move();
             repairing = false;
             repair_counter = timeToRepair;
         }
 
         if (near_obj && main_down) TryUse();
         else if (secondary_down) Drop();
+        else Move();
         main_down = false;
         secondary_down = false;
     }
