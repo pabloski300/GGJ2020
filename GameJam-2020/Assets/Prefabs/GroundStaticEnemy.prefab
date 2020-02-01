@@ -139,3 +139,11 @@ MonoBehaviour:
   timeToGetToPosition: 1
   projectileSpeed: 10
   projectileDamage: 100
+  shootSound:
+    name: Shoot
+    fmodFile: event:/Enemy_Tank/Shoot
+    parameters: []
+  movementSound:
+    name: Move
+    fmodFile: event:/Enemy_Tank/Movement
+    parameters: []

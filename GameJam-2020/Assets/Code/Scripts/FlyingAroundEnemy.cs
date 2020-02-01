@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -10,12 +11,19 @@ public class FlyingAroundEnemy : Enemy
     private float moveSpeed;
     [SerializeField, PropertyRange(0, 1), FoldoutGroup("Stats")]
     private float stopBeforeTimeToShoot;
+    [SerializeField, FoldoutGroup("Stats")]
+    private float shotsPerShot;
+    [SerializeField, FoldoutGroup("Stats")]
+    private float timeBetweenShots;
 
     private Vector2 centerOfEllipse;
-    [SerializeField, MinMaxSlider(3, 7, true)]
+    [SerializeField, MinMaxSlider(3, 7, true), FoldoutGroup("Movement")]
     private Vector2 minMaxVerticalAxis;
-    [SerializeField, MinMaxSlider(3, 7, true)]
+    [SerializeField, MinMaxSlider(3, 7, true), FoldoutGroup("Movement")]
     private Vector2 minMaxHorizontalAxis;
+
+
+    private WaitForSeconds wait;
 
     private float verticalAxis;
 
@@ -25,6 +33,7 @@ public class FlyingAroundEnemy : Enemy
 
     public override void Spawn(Vector3 startPosition, Vector3 endPosition)
     {
+        wait = new WaitForSeconds(timeBetweenShots);
         centerOfEllipse = new Vector2(endPosition.x, endPosition.y);
         verticalAxis = Random.Range(minMaxVerticalAxis.x, minMaxVerticalAxis.y);
         horizontalAxis = Random.Range(minMaxHorizontalAxis.x, minMaxHorizontalAxis.y);
@@ -50,6 +59,20 @@ public class FlyingAroundEnemy : Enemy
                 transform.position = new Vector3(centerOfEllipse.x + (horizontalAxis * Mathf.Cos(currentPositionOnEllipse)), centerOfEllipse.y + (verticalAxis * Mathf.Sin(currentPositionOnEllipse)), 0);
             }
             base.Update();
+        }
+    }
+
+    public override void Shoot()
+    {
+        StartCoroutine(ShootMultiple());
+    }
+
+    public IEnumerator ShootMultiple()
+    {
+        for (int i = 0; i < shotsPerShot; i++)
+        {
+            base.Shoot();
+            yield return wait;
         }
     }
 

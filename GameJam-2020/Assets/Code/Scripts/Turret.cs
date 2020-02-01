@@ -38,8 +38,17 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     [SerializeField, FoldoutGroup("Projectile")]
     private IShootable projectilePrefab;
 
-    [EnumToggleButtons, FoldoutGroup("Sounds")]
+    [SerializeField, FoldoutGroup("Sounds")]
     private Sound shootSound;
+    [SerializeField, FoldoutGroup("Sounds")]
+    private Sound movementSound;
+
+    [SerializeField, FoldoutGroup("Animation")]
+    private GameObject headUp;
+    [SerializeField, FoldoutGroup("Animation")]
+    private GameObject headDown;
+    [SerializeField, FoldoutGroup("Animation")]
+    private Transform rotationPoint;
 
     private Collider2D collider;
     private Enemy currentTarget;
@@ -51,6 +60,9 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     // Start is called before the first frame update
     void Start()
     {
+        shootSound.Init();
+        movementSound.Init();
+        alive = true;
         collider = GetComponent<Collider2D>();
         collider.enabled = true;
         currentHealth = maxHealth;
@@ -60,13 +72,45 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
         projectilePool = new List<IShootable>();
     }
 
+    public void Init()
+    {
+        alive = true;
+        collider.enabled = true;
+        currentHealth = maxHealth;
+        currentAmmo = maxAmmo;
+        timeToNextShoot = 1;
+        currentTarget = null;
+        changeAmmoEvent.Invoke(AmmunitionRelative);
+        changeHealthEvent.Invoke(HealthRelative);
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (alive)
         {
             if (timeToNextShoot > (1 - timeTakingAim))
+            {
                 TakeAim();
+            }
+
+            if (currentTarget != null)
+            {
+                movementSound.Play(this.transform);
+
+                rotationPoint.right = (currentTarget.transform.position - rotationPoint.transform.position).normalized;
+                if(rotationPoint.right.y > 0){
+                    headUp.SetActive(true);
+                    headDown.SetActive(false);
+                }else{
+                    headUp.SetActive(false);
+                    headDown.SetActive(true);
+                }
+            }
+            else
+            {
+                movementSound.Stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            }
 
             if (timeToNextShoot > 0 && currentAmmo > 0 && currentTarget != null)
                 timeToNextShoot -= Time.deltaTime * shootSpeed;
@@ -87,6 +131,7 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
 
     private void Shoot()
     {
+        shootSound.Play(this.transform);
         currentAmmo--;
         changeAmmoEvent.Invoke(AmmunitionRelative);
         timeToNextShoot = 1;
@@ -124,6 +169,7 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
 
     void Die()
     {
+        currentTarget = null;
         collider.enabled = false;
         GameManager.Instance.TurretKilled();
         alive = false;
@@ -142,5 +188,10 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
         currentAmmo += ammo;
         currentAmmo = Mathf.Min(currentAmmo, maxAmmo);
         changeAmmoEvent.Invoke(AmmunitionRelative);
+    }
+
+    public void RemoveBullets(int amount)
+    {
+        currentAmmo -= amount;
     }
 }
