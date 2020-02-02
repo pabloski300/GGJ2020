@@ -38,12 +38,16 @@ public class Spawner : MonoBehaviour
     {
         currentWaveNumber++;
         currentWaveNumber = Mathf.Min(groupWaves.Max(x => x.maxWave), currentWaveNumber);
+        Debug.Log(currentWaveNumber);
 
         List<GroupWave> groupsAllowed = (from x in groupWaves where x.minWave <= currentWaveNumber && x.maxWave >= currentWaveNumber select x).ToList();
+        Debug.Log(groupsAllowed.Count);
 
         int randomWave = Random.Range(0, groupsAllowed.Count);
+        Debug.Log(randomWave);
 
         Wave currentWave = groupsAllowed[randomWave].GetWave();
+        Debug.Log(currentWave);
 
         GameManager.Instance.WaveStarted(currentWave.timeToNextWave);
 
@@ -60,8 +64,6 @@ public class Spawner : MonoBehaviour
         }
 
         enemiesShuffled.Shuffle();
-
-        Debug.Log(enemiesShuffled.Count);
 
         foreach (Enemy e in enemiesShuffled)
         {

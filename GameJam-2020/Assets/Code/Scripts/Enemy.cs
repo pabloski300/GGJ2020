@@ -48,6 +48,7 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
     {
         shootSound.Init();
         movementSound.Init();
+        explosionSound.Init();
         movementSound.Play(this.transform);
         currentHealth = maxHealth;
         transform.position = startPosition;
@@ -102,6 +103,9 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
 
     private void Die()
     {
+        if(this.gameObject == null){
+            return;
+        }
         explosionSound.Play(this.transform);
         Instantiate(explosion, this.transform.position, Quaternion.Euler(-180, 0, 0));
         movementSound.Stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
