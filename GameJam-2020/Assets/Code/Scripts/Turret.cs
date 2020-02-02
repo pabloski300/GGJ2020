@@ -111,11 +111,11 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
         turret2.SetActive(false);
         turret3.SetActive(false);
         turret4.SetActive(false);
-        if (rotationPoint.right.y > 0)
+        if (rotationPoint.right.y >= 0)
         {
             headUp.SetActive(true);
         }
-        if (rotationPoint.right.y > 0)
+        if (rotationPoint.right.y < 0)
         {
             headDown.SetActive(true);
         }
