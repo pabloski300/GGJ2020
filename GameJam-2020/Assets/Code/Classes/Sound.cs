@@ -15,10 +15,15 @@ public class Sound
     [SerializeField]
     private List<ParamRef> parameters;
 
-    public void Init(){
+    public void Init()
+    {
         if (fmodFile != null && fmodFile != "" && !instance.isValid())
         {
             instance = RuntimeManager.CreateInstance(fmodFile);
+            foreach (ParamRef p in parameters)
+            {
+                instance.setParameterValue(p.Name, p.Value);
+            }
         }
     }
 

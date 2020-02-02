@@ -12,14 +12,18 @@ public class Projectile : MonoBehaviour, IShootable
     [SerializeField]
     private LayerMask collisionLayers;
     private IDamage goingToHit;
+    [SerializeField]
+    private Sound hitSound;
 
     public void Shoot(float _speed, Vector3 _dir, int _damageAmount, IShooter _shooter, Vector3 _shootPosition)
     {
+        hitSound.Init();
         speed = _speed;
         direction = _dir;
         damageAmount = _damageAmount;
         shooter = _shooter;
         this.transform.position = _shootPosition;
+        this.transform.right = _dir.normalized;
         this.gameObject.SetActive(true);
     }
 
@@ -54,6 +58,7 @@ public class Projectile : MonoBehaviour, IShootable
 
     private void Die()
     {
+        hitSound.Play(this.transform);
         goingToHit = null;
         currentTimeAlive = 0;
         this.gameObject.SetActive(false);

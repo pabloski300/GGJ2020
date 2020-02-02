@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3024823341014085741}
   - component: {fileID: 7013409914918201003}
   - component: {fileID: 3085011986524969199}
-  m_Layer: 12
-  m_Name: ProjectileEnemy
+  - component: {fileID: 8390864057565262012}
+  m_Layer: 11
+  m_Name: PSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7925273327514755201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.11053148, y: 0.34605998, z: -1.954407}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,8 +72,9 @@ SpriteRenderer:
   m_SortingLayerID: -776590613
   m_SortingLayer: 6
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 47ab2fa123149564f9647d5fd1efbdc7, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.12460303, a: 1}
+  m_Sprite: {fileID: -8642591968943190659, guid: 03fba37119e14124bb7c135aa2548d1b,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,3 +100,26 @@ MonoBehaviour:
   collisionLayers:
     serializedVersion: 2
     m_Bits: 1280
+  hitSound:
+    name: 
+    fmodFile: event:/Generic/Impact
+    parameters: []
+--- !u!95 &8390864057565262012
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925273327514755201}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3dabc70ba51114d43abdb121e0847935, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

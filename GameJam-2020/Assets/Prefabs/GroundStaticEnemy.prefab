@@ -241,7 +241,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 3085011986524969199, guid: 64461cf862ffbfe419d08cc457aa9339, type: 3}
+    - {fileID: 3085011986524969199, guid: fb13124e65dec3b469fb48053a343546, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -264,6 +264,14 @@ MonoBehaviour:
     name: Move
     fmodFile: event:/Enemy_Tank/Movement
     parameters: []
+  explosionSound:
+    name: 
+    fmodFile: event:/Generic/Explosion
+    parameters:
+    - Name: Small-Big
+      Value: 1
+  explosion: {fileID: 3006217072954543639, guid: c775e7c83ce8b3942a729959a62af664,
+    type: 3}
   canon: {fileID: 5480472243344454392}
 --- !u!1 &7684207222857038700
 GameObject:
@@ -302,6 +310,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6956915925108341302}
     m_Modifications:
+    - target: {fileID: 6462548910844587865, guid: 53a5a002e59374c4b871ee202d457d5b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462548910844587865, guid: 53a5a002e59374c4b871ee202d457d5b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462548910844587865, guid: 53a5a002e59374c4b871ee202d457d5b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.33
+      objectReference: {fileID: 0}
     - target: {fileID: 6462548910844587871, guid: 53a5a002e59374c4b871ee202d457d5b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
@@ -345,12 +368,12 @@ PrefabInstance:
     - target: {fileID: 6462548910939516971, guid: 53a5a002e59374c4b871ee202d457d5b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.4421921
+      value: -1.33
       objectReference: {fileID: 0}
     - target: {fileID: 6462548910939516971, guid: 53a5a002e59374c4b871ee202d457d5b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2404218
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6462548910939516971, guid: 53a5a002e59374c4b871ee202d457d5b,
         type: 3}

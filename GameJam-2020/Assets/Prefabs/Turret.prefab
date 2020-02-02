@@ -1051,7 +1051,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 3085011986524969199, guid: 215f1b311a659fd49873c3d76d5ae72c, type: 3}
+    - {fileID: 3085011986524969199, guid: 05a5da54e5ca00c4c82e79603125381d, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -1111,14 +1111,14 @@ MonoBehaviour:
       Entry: 10
       Data: 0
   maxHealth: 100
-  maxAmmo: 10
+  maxAmmo: 50
   shootSpeed: 1
   maxCartridges: 3
   timeTakingAim: 0.3
   shootPoint: {fileID: 8408308486248291722}
   side: 0
   projectileSpeed: 6
-  projectileDamage: 0
+  projectileDamage: 1
   shootSound:
     name: Shoot
     fmodFile: event:/Torretas/Shoot
@@ -1132,7 +1132,7 @@ MonoBehaviour:
     fmodFile: event:/Generic/Explosion
     parameters:
     - Name: Small-Big
-      Value: 0
+      Value: 1
   headUp: {fileID: 8152601881827165569}
   headDown: {fileID: 2448782407372000200}
   rotationPoint: {fileID: 8991082580590716990}

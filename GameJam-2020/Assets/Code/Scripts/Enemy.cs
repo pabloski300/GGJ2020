@@ -28,6 +28,11 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
     protected Sound shootSound;
     [SerializeField, FoldoutGroup("Sound")]
     protected Sound movementSound;
+    [SerializeField, FoldoutGroup("Sound")]
+    protected Sound explosionSound;
+
+    [SerializeField, FoldoutGroup("FX")]
+    protected GameObject explosion;
 
 
 
@@ -76,19 +81,18 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
         if (projectile == null && currentTarget != null)
         {
             IShootable newProjectile = ((IShootable)Instantiate((Object)projectilePrefab, this.transform.position, Quaternion.identity));
-            newProjectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, shootPoint.position);
+            newProjectile.Shoot(projectileSpeed, currentTarget.transform.position - shootPoint.position, projectileDamage, this, shootPoint.position);
         }
-        else if(currentTarget != null)
+        else if (currentTarget != null)
         {
             projectilePool.Remove(projectile);
-            projectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, shootPoint.position);
+            projectile.Shoot(projectileSpeed, currentTarget.transform.position - shootPoint.position, projectileDamage, this, shootPoint.position);
         }
         currentTarget = null;
     }
 
     public void ReceiveDamage(int damageAmount)
     {
-        Debug.Log($"{transform.name} received {damageAmount}");
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
@@ -98,13 +102,20 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
 
     private void Die()
     {
+        explosionSound.Play(this.transform);
+        Instantiate(explosion, this.transform.position, Quaternion.Euler(-180, 0, 0));
         movementSound.Stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         foreach (Projectile p in projectilePool)
         {
-            Destroy(p.gameObject);
+            if (p != null)
+            {
+                Destroy(p.gameObject);
+            }
         }
         GameManager.Instance.EnemyKilled();
-        Destroy(this.gameObject);
+        if(this.gameObject != null){
+            Destroy(this.gameObject);
+        }
     }
 
     public void RestoreProjectile(IShootable projectile)
@@ -117,7 +128,10 @@ public class Enemy : SerializedMonoBehaviour, IDamage, IShooter
         movementSound.Stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         foreach (Projectile p in projectilePool)
         {
-            Destroy(p.gameObject);
+            if (p != null)
+            {
+                Destroy(p.gameObject);
+            }
         }
         Destroy(this.gameObject);
     }

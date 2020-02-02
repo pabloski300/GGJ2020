@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: bank:/Master Bank.strings.bank
   m_EditorClassIdentifier: 
   Path: FMOD\JamFMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 637162325443450172
+  lastModified: 637162408902317940
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1658
+    Value: 1704
   Exists: 1
 --- !u!114 &-8843908398996215629
 MonoBehaviour:
@@ -194,11 +194,11 @@ MonoBehaviour:
   m_Name: bank:/Master Bank.bank
   m_EditorClassIdentifier: 
   Path: C:\Git\GGJ2020\GameJam-2020\FMOD\JamFMOD\Build\Desktop\Master Bank.bank
-  lastModified: 637162325443440192
+  lastModified: 637162408902307970
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1931776
+    Value: 2655072
   Exists: 1
 --- !u!114 &-4574519773627476890
 MonoBehaviour:
@@ -381,7 +381,7 @@ MonoBehaviour:
   Min: 0
   Max: 1000
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-383644603816208561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,11 +465,12 @@ MonoBehaviour:
   - {fileID: 702760562060185094}
   - {fileID: -1432853173465019752}
   - {fileID: 7914107441440516340}
+  - {fileID: 2747069146204114507}
   MasterBanks:
   - {fileID: -4854674527828298302}
   StringsBanks:
   - {fileID: -9087173361617540311}
-  stringsBankWriteTime: 637162325443450172
+  stringsBankWriteTime: 637162408902317940
   cacheVersion: 3
 --- !u!114 &135321907806991513
 MonoBehaviour:
@@ -537,6 +538,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 565
+--- !u!114 &1027569585732447728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explosion/Small-Big
+  m_EditorClassIdentifier: 
+  Name: Small-Big
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &1103979236142697096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,6 +646,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 156
+--- !u!114 &1791230760438957407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Shoot/ROF
+  m_EditorClassIdentifier: 
+  Name: ROF
+  Min: 0
+  Max: 1000
+  Default: 0
+  Exists: 1
 --- !u!114 &1913909814334578580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,6 +759,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &2747069146204114507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MSC/MSC General
+  m_EditorClassIdentifier: 
+  Path: event:/MSC/MSC General
+  guid: 258cffefef4b6946aa40939a5641b274
+  Banks:
+  - {fileID: -4854674527828298302}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 73487
 --- !u!114 &2947066529444343212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,7 +878,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &5862924588649280532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -841,7 +899,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 5003570704306815398}
+  - {fileID: 1027569585732447728}
   MinDistance: 0
   MaxDistance: 0
   Length: 3360
@@ -865,7 +923,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: -537310406690341081}
+  - {fileID: 1791230760438957407}
   MinDistance: 0
   MaxDistance: 0
   Length: 220

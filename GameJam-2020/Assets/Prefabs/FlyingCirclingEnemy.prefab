@@ -210,7 +210,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 3085011986524969199, guid: 64461cf862ffbfe419d08cc457aa9339, type: 3}
+    - {fileID: 3085011986524969199, guid: 215f1b311a659fd49873c3d76d5ae72c, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -224,7 +224,7 @@ MonoBehaviour:
   timeToGetToPosition: 1
   shootPoint: {fileID: 5842835880281119123}
   projectileSpeed: 5
-  projectileDamage: 100
+  projectileDamage: 1
   shootSound:
     name: Shoot
     fmodFile: event:/Enemy _Helicopter/Shoot
@@ -233,6 +233,14 @@ MonoBehaviour:
     name: Movement
     fmodFile: event:/Enemy _Helicopter/Movement
     parameters: []
+  explosionSound:
+    name: 
+    fmodFile: event:/Generic/Explosion
+    parameters:
+    - Name: Small-Big
+      Value: 0
+  explosion: {fileID: 3636259412653863544, guid: fcc8af1b5ae35e34f9c903379a2e7435,
+    type: 3}
   moveSpeed: 1
   stopBeforeTimeToShoot: 0.237
   shotsPerShot: 3
