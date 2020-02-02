@@ -223,8 +223,8 @@ MonoBehaviour:
   shootSpeed: 1
   timeToGetToPosition: 1
   shootPoint: {fileID: 5842835880281119123}
-  projectileSpeed: 10
-  projectileDamage: 1
+  projectileSpeed: 5
+  projectileDamage: 100
   shootSound:
     name: Shoot
     fmodFile: event:/Enemy _Helicopter/Shoot

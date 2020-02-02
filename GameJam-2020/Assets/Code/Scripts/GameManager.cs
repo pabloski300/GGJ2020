@@ -157,7 +157,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void RestartGame(){
-        parallax.MasterSpeed = 1;
         timeToWait = 0;
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         foreach(Enemy e in  enemies){
@@ -175,6 +174,7 @@ public class GameManager : MonoBehaviour
         startView.Show();
         tutorialView.Show();
         gameState = GameState.Menus;
+        parallax.MasterSpeed = 1;
     }
 
     public void QuitGame()

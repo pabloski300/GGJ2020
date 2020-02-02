@@ -7,6 +7,8 @@ using UnityEngine;
 public class FlyingAroundEnemy : Enemy
 {
     private bool shooting;
+    private bool inShoot;
+    private Turret inShotTarget;
     [SerializeField, FoldoutGroup("Stats")]
     private float moveSpeed;
     [SerializeField, PropertyRange(0, 1), FoldoutGroup("Stats")]
@@ -50,14 +52,14 @@ public class FlyingAroundEnemy : Enemy
     {
         if (GameManager.Instance.CurrentGameState != GameManager.GameState.GameFinished)
         {
-            if (timeToNextShoot > 0 && currentTarget == null && inGame)
+            if (timeToNextShoot > 0 && currentTarget == null && inGame && !inShoot)
             {
                 TakeAim();
             }
 
             shooting = timeToNextShoot < stopBeforeTimeToShoot;
 
-            if (inGame && !shooting)
+            if (inGame && !shooting && !inShoot)
             {
                 currentPositionOnEllipse += (Time.deltaTime * moveSpeed) % 360;
                 transform.position = new Vector3(centerOfEllipse.x + (horizontalAxis * Mathf.Cos(currentPositionOnEllipse)), centerOfEllipse.y + (verticalAxis * Mathf.Sin(currentPositionOnEllipse)), 0);
@@ -70,22 +72,42 @@ public class FlyingAroundEnemy : Enemy
                 lastPosition = transform.position;
             }
 
-            base.Update();
+            if (!inShoot)
+            {
+                if (timeToNextShoot > 0 && currentTarget != null && inGame)
+                {
+                    timeToNextShoot -= Time.deltaTime * shootSpeed;
+                }
+                if (timeToNextShoot <= 0 && currentTarget != null && inGame)
+                {
+                    Shoot();
+                }
+
+                if (currentTarget != null)
+                {
+                    Debug.DrawLine(this.transform.position, this.currentTarget.transform.position, Color.green);
+                }
+            }
         }
     }
+
 
     public override void Shoot()
     {
         StartCoroutine(ShootMultiple());
+        inShotTarget = this.currentTarget;
+        inShoot = true;
     }
 
     public IEnumerator ShootMultiple()
     {
         for (int i = 0; i < shotsPerShot; i++)
         {
+            currentTarget = inShotTarget;
             base.Shoot();
             yield return wait;
         }
+        inShoot = false;
     }
 
     private void TakeAim()

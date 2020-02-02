@@ -44,6 +44,8 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     private Sound shootSound;
     [SerializeField, FoldoutGroup("Sounds")]
     private Sound movementSound;
+    [SerializeField, FoldoutGroup("Sounds")]
+    private Sound explosionSound;
 
     [SerializeField, FoldoutGroup("Animation")]
     private GameObject headUp;
@@ -51,6 +53,20 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     private GameObject headDown;
     [SerializeField, FoldoutGroup("Animation")]
     private Transform rotationPoint;
+    [SerializeField, FoldoutGroup("Animation")]
+    private GameObject turret1;
+    [SerializeField, FoldoutGroup("Animation")]
+    private GameObject turret2;
+    [SerializeField, FoldoutGroup("Animation")]
+    private GameObject turret3;
+    [SerializeField, FoldoutGroup("Animation")]
+    private GameObject turret4;
+    [SerializeField, FoldoutGroup("Animation")]
+    private ParticleSystem explosion;
+    [SerializeField, FoldoutGroup("Animation")]
+    private ParticleSystem smoke;
+
+
 
     private Collider2D collider;
     private Enemy currentTarget;
@@ -64,6 +80,7 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     {
         shootSound.Init();
         movementSound.Init();
+        explosionSound.Init();
         alive = true;
         collider = GetComponent<Collider2D>();
         collider.enabled = true;
@@ -72,6 +89,12 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
         timeToNextShoot = 1;
         currentTarget = null;
         projectilePool = new List<IShootable>();
+        turret1.SetActive(true);
+        turret2.SetActive(false);
+        turret3.SetActive(false);
+        turret4.SetActive(false);
+        var emission = smoke.emission;
+        emission.rateOverTime = 0;
     }
 
     public void Init()
@@ -84,6 +107,20 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
         currentTarget = null;
         changeAmmoEvent.Invoke(AmmunitionRelative);
         changeHealthEvent.Invoke(HealthRelative);
+        turret1.SetActive(true);
+        turret2.SetActive(false);
+        turret3.SetActive(false);
+        turret4.SetActive(false);
+        if (rotationPoint.right.y > 0)
+        {
+            headUp.SetActive(true);
+        }
+        if (rotationPoint.right.y > 0)
+        {
+            headDown.SetActive(true);
+        }
+        var emission = smoke.emission;
+        emission.rateOverTime = 0;
     }
 
     // Update is called once per frame
@@ -101,10 +138,13 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
                 movementSound.Play(this.transform);
 
                 rotationPoint.right = (currentTarget.transform.position - rotationPoint.transform.position).normalized;
-                if(rotationPoint.right.y > 0){
+                if (rotationPoint.right.y > 0)
+                {
                     headUp.SetActive(true);
                     headDown.SetActive(false);
-                }else{
+                }
+                else
+                {
                     headUp.SetActive(false);
                     headDown.SetActive(true);
                 }
@@ -161,9 +201,44 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
         if (alive)
         {
             currentHealth -= damageAmount;
+            if (HealthRelative > 0.66)
+            {
+                turret1.SetActive(true);
+                turret2.SetActive(false);
+                turret3.SetActive(false);
+                turret4.SetActive(false);
+            }
+            else if (HealthRelative < 0.66 && HealthRelative > 0.33)
+            {
+                turret1.SetActive(false);
+                turret2.SetActive(true);
+                turret3.SetActive(false);
+                turret4.SetActive(false);
+                var emission = smoke.emission;
+                emission.rateOverTime = 1;
+            }
+            else if (HealthRelative < 0.33)
+            {
+                turret1.SetActive(false);
+                turret2.SetActive(false);
+                turret3.SetActive(true);
+                turret4.SetActive(false);
+                var emission = smoke.emission;
+                emission.rateOverTime = 2;
+            }
             changeHealthEvent.Invoke(HealthRelative);
             if (currentHealth <= 0)
             {
+                explosion.Play();
+                explosionSound.Play(this.transform);
+                turret1.SetActive(false);
+                turret2.SetActive(false);
+                turret3.SetActive(false);
+                turret4.SetActive(true);
+                headUp.SetActive(false);
+                headDown.SetActive(false);
+                var emission = smoke.emission;
+                emission.rateOverTime = 0;
                 Die();
             }
         }
