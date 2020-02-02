@@ -5,7 +5,7 @@
             <value>Shoot</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>0</value>
         </property>
         <relationship name="folder">
             <destination>{5d464b15-371d-4147-af2e-27c39901209e}</destination>
@@ -137,10 +137,13 @@
     <object class="MixerBusEffectChain" id="{f51674d2-384d-44a8-be44-f4db1f0f2a92}">
         <relationship name="effects">
             <destination>{4e05fd4e-2ec4-4f19-90b3-d50a213da078}</destination>
-            <destination>{a44d6f17-7dc4-49cf-b87b-cc29a4eb4a73}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{e8bbeb4d-46fe-47ff-82c1-09dc224fde2e}"/>
+    <object class="MixerBusPanner" id="{e8bbeb4d-46fe-47ff-82c1-09dc224fde2e}">
+        <property name="outputFormatOverridden">
+            <value>true</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{77511765-4db5-4877-a2f4-23337efab067}"/>
     <object class="FadeCurve" id="{d4f3cd8b-bc74-4695-ac7e-13b2f651a932}">
         <relationship name="startPoint">
@@ -186,7 +189,6 @@
     </object>
     <object class="MixerBusPanner" id="{fd24f318-38ac-45d4-81bc-1d8249e689f3}"/>
     <object class="MixerBusFader" id="{4e05fd4e-2ec4-4f19-90b3-d50a213da078}"/>
-    <object class="SpatialiserEffect" id="{a44d6f17-7dc4-49cf-b87b-cc29a4eb4a73}"/>
     <object class="AutomationPoint" id="{c3f98d28-ff56-4433-a7f3-dd87b8ab0235}">
         <property name="position">
             <value>0.16</value>

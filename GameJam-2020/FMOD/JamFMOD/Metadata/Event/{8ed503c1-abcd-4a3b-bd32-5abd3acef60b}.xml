@@ -5,7 +5,7 @@
             <value>PickUp Fix</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>0</value>
         </property>
         <relationship name="folder">
             <destination>{6dc69fa8-f0c0-40e0-b58b-a657857897db}</destination>
@@ -115,10 +115,13 @@
     <object class="MixerBusEffectChain" id="{04f09027-df5a-4f87-b480-29f3d0c1c7e1}">
         <relationship name="effects">
             <destination>{4b722989-3460-4f04-b9da-e434663d119a}</destination>
-            <destination>{1a94b9de-7fe6-40b9-9d55-3872b242ed8b}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{e4d7243e-dc6e-4b70-9e2d-9a5eb9d4071a}"/>
+    <object class="MixerBusPanner" id="{e4d7243e-dc6e-4b70-9e2d-9a5eb9d4071a}">
+        <property name="outputFormatOverridden">
+            <value>true</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{7f7916d5-094a-4ef8-9682-33f7fcf079b9}"/>
     <object class="SingleSound" id="{eb63da0b-d6fe-4cbc-a7d8-a7f4dc6c4d5f}">
         <relationship name="audioFile">
@@ -142,6 +145,5 @@
     </object>
     <object class="MixerBusPanner" id="{169552f6-5a6e-4433-9c31-ba3d5453cd46}"/>
     <object class="MixerBusFader" id="{4b722989-3460-4f04-b9da-e434663d119a}"/>
-    <object class="SpatialiserEffect" id="{1a94b9de-7fe6-40b9-9d55-3872b242ed8b}"/>
     <object class="MixerBusFader" id="{d01a7ef5-6a79-4ee6-99d5-061bf18afaa1}"/>
 </objects>

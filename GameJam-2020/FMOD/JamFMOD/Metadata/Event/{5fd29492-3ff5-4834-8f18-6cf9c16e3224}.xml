@@ -5,7 +5,7 @@
             <value>In</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>1</value>
         </property>
         <relationship name="folder">
             <destination>{f19b7600-9f7f-48ec-bb14-2a8ef1af43c5}</destination>
@@ -113,10 +113,16 @@
     <object class="MixerBusEffectChain" id="{451a7eda-af6f-4118-87ee-a13537b5b8d8}">
         <relationship name="effects">
             <destination>{a4fb0a82-ca41-4c7d-96fc-3cc51941b5bb}</destination>
-            <destination>{6a76161f-91aa-413a-8120-d56c9ff5bc79}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{e78a449e-ee2b-453f-aa5a-6064069b1bc3}"/>
+    <object class="MixerBusPanner" id="{e78a449e-ee2b-453f-aa5a-6064069b1bc3}">
+        <property name="overridingOutputFormat">
+            <value>1</value>
+        </property>
+        <property name="outputFormatOverridden">
+            <value>true</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{8e6df922-9503-41ff-a235-0201b316533b}"/>
     <object class="MixerBusEffectChain" id="{1a9a2e54-a0a2-46e4-8345-a25414874c59}">
         <relationship name="effects">
@@ -125,6 +131,5 @@
     </object>
     <object class="MixerBusPanner" id="{7a4724b4-86b5-4a7b-87cf-65dbc11d56ea}"/>
     <object class="MixerBusFader" id="{a4fb0a82-ca41-4c7d-96fc-3cc51941b5bb}"/>
-    <object class="SpatialiserEffect" id="{6a76161f-91aa-413a-8120-d56c9ff5bc79}"/>
     <object class="MixerBusFader" id="{b12d33f8-1aa8-475a-97a0-bb55939e4151}"/>
 </objects>
