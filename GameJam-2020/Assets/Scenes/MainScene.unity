@@ -1739,6 +1739,12 @@ PrefabInstance:
       propertyPath: ambient.fmodFile
       value: event:/Ambient/Dessert
       objectReference: {fileID: 0}
+    - target: {fileID: 6932043438917478700, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 867147018635294645, guid: f28a767feffeb7a4fb71dfd69a8a7fc0,
+        type: 3}
     - target: {fileID: 6932043438917478701, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
       propertyPath: m_LocalPosition.x
