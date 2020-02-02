@@ -253,6 +253,8 @@ public class PlayerController : MonoBehaviour, IDamage
         carrying_body.gameObject.SetActive(true);
         body.gameObject.SetActive(false);
 
+        //Workaroud
+        if (obj != items_to_carry[0].transform) return;
         switch (obj.tag)
         {
             case "bullets":
