@@ -1663,37 +1663,57 @@ PrefabInstance:
     - target: {fileID: 2488663014389581280, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2488663014389581280, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2488663014389581280, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2488663014389581280, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2488663014389581280, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488663014389581280, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_text
+      value: FIX IT!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488663014389581280, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6564464290131493371, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.7000732
+      value: 8.4
       objectReference: {fileID: 0}
     - target: {fileID: 6564464290131493371, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -6.0999756
+      value: -54.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564464290131493371, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564464290131493371, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 35.1
       objectReference: {fileID: 0}
     - target: {fileID: 6932043438145412433, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
@@ -1935,6 +1955,56 @@ PrefabInstance:
       propertyPath: ShowBehavior.OnStart.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1190943645}
+    - target: {fileID: 6932043439804012325, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_text
+      value: FIX IT!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043439804012325, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043439804012325, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043439804012325, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043439804012325, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043439804012325, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043439804012326, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043439804012326, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.7000122
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043439804012326, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043439804012326, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 35.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6932043439837993321, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
       propertyPath: HideBehavior.OnStart.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
