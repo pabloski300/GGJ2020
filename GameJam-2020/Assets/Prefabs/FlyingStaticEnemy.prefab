@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 753368687
-  m_SortingLayer: 1
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 21ba845f09f9c004ebd6acb6fb8ad528, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -139,7 +139,7 @@ MonoBehaviour:
   timeToGetToPosition: 1
   shootPoint: {fileID: 6956915925108341302}
   projectileSpeed: 10
-  projectileDamage: 100
+  projectileDamage: 1
   shootSound:
     name: Shoot
     fmodFile: event:/Enemy_Jet/Shoot

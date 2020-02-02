@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
         [BoxGroup("Config Fields"), SerializeField]
     private Parallax parallax;
 
+            [BoxGroup("Sounds"), SerializeField]
+    private Sound ambient;
+
     private int enemyNumber = 0;
     private float timeToWait;
 
@@ -66,6 +69,8 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
         spawner = FindObjectOfType<Spawner>();
+        ambient.Init();
+        ambient.Play(this.transform);
         gameState = GameState.Menus;
     }
 

@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 753368687
-  m_SortingLayer: 1
+  m_SortingLayer: 7
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 8490a4bcf3e8025409df3c1fe6aba990, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -154,7 +154,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 753368687
-  m_SortingLayer: 1
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -3181409638198904196, guid: f36e0a28137e31643814ecda36640591,
     type: 3}
@@ -224,7 +224,7 @@ MonoBehaviour:
   timeToGetToPosition: 1
   shootPoint: {fileID: 5842835880281119123}
   projectileSpeed: 10
-  projectileDamage: 100
+  projectileDamage: 1
   shootSound:
     name: Shoot
     fmodFile: event:/Enemy _Helicopter/Shoot

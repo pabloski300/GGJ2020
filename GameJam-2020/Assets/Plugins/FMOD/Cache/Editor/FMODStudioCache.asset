@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: bank:/Master Bank.strings.bank
   m_EditorClassIdentifier: 
   Path: FMOD\JamFMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 637161967105949144
+  lastModified: 637162325443450172
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1602
+    Value: 1658
   Exists: 1
 --- !u!114 &-8843908398996215629
 MonoBehaviour:
@@ -36,11 +36,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 374
 --- !u!114 &-8596332138241694625
 MonoBehaviour:
@@ -75,7 +75,7 @@ MonoBehaviour:
   Min: 0
   Max: 1000
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-7964690712517245269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +118,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-7262014504544348122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Shoot/ROF
+  m_EditorClassIdentifier: 
+  Name: ROF
+  Min: 0
+  Max: 1000
+  Default: 0
+  Exists: 1
 --- !u!114 &-6750276539110821659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,11 +152,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 326
 --- !u!114 &-4986197618753006576
 MonoBehaviour:
@@ -158,11 +175,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 358
 --- !u!114 &-4574519773627476890
 MonoBehaviour:
@@ -201,11 +218,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 283
 --- !u!114 &-4213032837424358588
 MonoBehaviour:
@@ -260,11 +277,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 2232
 --- !u!114 &-1432853173465019752
 MonoBehaviour:
@@ -283,11 +300,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 733
 --- !u!114 &-760847671680593265
 MonoBehaviour:
@@ -306,11 +323,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 2750
 --- !u!114 &-383644603816208561
 MonoBehaviour:
@@ -329,11 +346,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 169
 --- !u!114 &-167087484736216926
 MonoBehaviour:
@@ -352,11 +369,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 822
 --- !u!114 &11400000
 MonoBehaviour:
@@ -394,11 +411,12 @@ MonoBehaviour:
   - {fileID: 1508175446478675434}
   - {fileID: 702760562060185094}
   - {fileID: -1432853173465019752}
+  - {fileID: 7914107441440516340}
   MasterBanks:
   - {fileID: 2347347946894192887}
   StringsBanks:
   - {fileID: -9087173361617540311}
-  stringsBankWriteTime: 637161967105949144
+  stringsBankWriteTime: 637162325443450172
   cacheVersion: 3
 --- !u!114 &135321907806991513
 MonoBehaviour:
@@ -437,11 +455,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 1
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 0
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 9472
 --- !u!114 &702760562060185094
 MonoBehaviour:
@@ -460,11 +478,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 565
 --- !u!114 &1103979236142697096
 MonoBehaviour:
@@ -483,11 +501,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 1
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 0
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 17383
 --- !u!114 &1189076256406911711
 MonoBehaviour:
@@ -528,11 +546,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 0
 --- !u!114 &1508175446478675434
 MonoBehaviour:
@@ -551,11 +569,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 156
 --- !u!114 &1913909814334578580
 MonoBehaviour:
@@ -574,11 +592,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 500
 --- !u!114 &2295656483836919237
 MonoBehaviour:
@@ -610,11 +628,11 @@ MonoBehaviour:
   m_Name: bank:/Master Bank.bank
   m_EditorClassIdentifier: 
   Path: C:\Git\GGJ2020\GameJam-2020\FMOD\JamFMOD\Build\Desktop\Master Bank.bank
-  lastModified: 637162012350980334
+  lastModified: 637162325443440192
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1362336
+    Value: 1931776
   Exists: 1
 --- !u!114 &2371543483255976150
 MonoBehaviour:
@@ -632,7 +650,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &2947066529444343212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,11 +688,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 1
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 0
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 22469
 --- !u!114 &4937207294830362915
 MonoBehaviour:
@@ -713,12 +731,12 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 2371543483255976150}
-  MinDistance: 1
-  MaxDistance: 20
+  - {fileID: 7843469369047386706}
+  MinDistance: 0
+  MaxDistance: 0
   Length: 3360
 --- !u!114 &6150801092881276154
 MonoBehaviour:
@@ -737,12 +755,12 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: -8180770789856453272}
-  MinDistance: 1
-  MaxDistance: 20
+  - {fileID: -7262014504544348122}
+  MinDistance: 0
+  MaxDistance: 0
   Length: 220
 --- !u!114 &6388351154444494271
 MonoBehaviour:
@@ -798,12 +816,52 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 4774
+--- !u!114 &7843469369047386706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explosion/Small-Big
+  m_EditorClassIdentifier: 
+  Name: Small-Big
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &7914107441440516340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambient/Dessert
+  m_EditorClassIdentifier: 
+  Path: event:/Ambient/Dessert
+  guid: c259f364fb0d9242821fe9870a4b1b0c
+  Banks:
+  - {fileID: 2347347946894192887}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 48424
 --- !u!114 &8627042647974312526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,9 +879,9 @@ MonoBehaviour:
   Banks:
   - {fileID: 2347347946894192887}
   IsStream: 1
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 0
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 23062
