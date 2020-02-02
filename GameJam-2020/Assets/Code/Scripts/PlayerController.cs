@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     //Keys
     private bool main_down;
+    private bool main_down_sustained;
     private bool secondary_down;
 
     //Object Types
@@ -94,6 +95,7 @@ public class PlayerController : MonoBehaviour, IDamage
         repairing = false;
         loading_bullets = false;
         main_down = false;
+        main_down_sustained = false;
         secondary_down = false;
         facing_left = false;
         obj = null;
@@ -108,6 +110,7 @@ public class PlayerController : MonoBehaviour, IDamage
     void Update()
     {
         main_down = Input.GetKeyDown(KeyCode.Z);
+        main_down_sustained = Input.GetKey(KeyCode.Z);
         secondary_down = Input.GetKeyDown(KeyCode.X);
 
         if (loading_bullets && load_counter >= 0)
@@ -129,7 +132,7 @@ public class PlayerController : MonoBehaviour, IDamage
             bullet_packages = 0;
         }
 
-        if (repairing && main_down)
+        if (repairing && main_down_sustained)
         {
             Repair();
             currentTimeBetweenFootsteps = timeBetweenFootsteps;
@@ -236,6 +239,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void Repair()
     {
+        Debug.Log("Repairing");
         repair_counter -= Time.deltaTime;
 
         if (repair_counter <= 0)
