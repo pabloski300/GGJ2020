@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 6956915925108341303}
   - component: {fileID: 6956915925108341301}
   - component: {fileID: 8458470791012828477}
+  - component: {fileID: 6330125080111986494}
   m_Layer: 9
   m_Name: GroundStaticEnemy
   m_TagString: Untagged
@@ -273,6 +274,25 @@ MonoBehaviour:
   explosion: {fileID: 3006217072954543639, guid: c775e7c83ce8b3942a729959a62af664,
     type: 3}
   canon: {fileID: 5480472243344454392}
+--- !u!95 &6330125080111986494
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6956915925108341321}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f9ca14a0585b8bf4bbec6c12e4066884, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7684207222857038700
 GameObject:
   m_ObjectHideFlags: 0

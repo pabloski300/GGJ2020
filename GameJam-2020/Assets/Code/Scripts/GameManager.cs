@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     private int turretAmount;
     [SerializeField, BoxGroup("Main Fields")]
     private Transform spawnPosition;
-        [SerializeField, BoxGroup("Main Fields")]
+    [SerializeField, BoxGroup("Main Fields")]
     private GameObject toolBox;
-        [SerializeField, BoxGroup("Main Fields")]
+    [SerializeField, BoxGroup("Main Fields")]
     private Transform toolBoxPosition;
 
     private Spawner spawner;
@@ -40,14 +40,14 @@ public class GameManager : MonoBehaviour
     private UIView startView;
     [BoxGroup("Config Fields"), SerializeField]
     private UIView tutorialView;
-        [BoxGroup("Config Fields"), SerializeField]
+    [BoxGroup("Config Fields"), SerializeField]
     private Parallax parallax;
 
-            [BoxGroup("Sounds"), SerializeField]
+    [BoxGroup("Sounds"), SerializeField]
     private Sound ambient;
 
-    
-            [BoxGroup("Sounds"), SerializeField]
+
+    [BoxGroup("Sounds"), SerializeField]
     private Sound main;
 
     private int enemyNumber = 0;
@@ -58,10 +58,17 @@ public class GameManager : MonoBehaviour
         Menus,
         GameStarting,
         GameStarted,
-        GameFinished
+        GameFinished,
+        Spawning
     }
     private GameState gameState;
-    public GameState CurrentGameState {get{return gameState;}}
+    public GameState CurrentGameState { get { return gameState; } }
+
+    public void Update(){
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            QuitGame();
+        }
+    }
 
     public static GameManager Instance;
     // Start is called before the first frame update
@@ -122,7 +129,7 @@ public class GameManager : MonoBehaviour
         {
             rechargeText.Hide();
         }
-    PlayGame();
+        PlayGame();
     }
 
     public void PlayGame()
@@ -131,54 +138,71 @@ public class GameManager : MonoBehaviour
         startText.Show();
     }
 
-    public void StartSpawner(){
+    public void StartSpawner()
+    {
         StartCoroutine(WaitForNextWave());
     }
 
-    public void WaveStarted(float _timeToWait){
+    public void WaveStarted(float _timeToWait)
+    {
         timeToWait = _timeToWait;
     }
 
-    public void EnemySpawned() {
+    public void EnemySpawned()
+    {
         enemyNumber++;
     }
-    public void EnemyKilled(){
-        enemyNumber--;
-        if(enemyNumber <= 0){
-            enemyNumber = 0;
-            StartCoroutine(WaitForNextWave());
+    public void EnemyKilled()
+    {
+        if (gameState == GameState.GameStarted)
+        {
+            enemyNumber--;
+            if (enemyNumber <= 0)
+            {
+                enemyNumber = 0;
+                gameState = GameState.Spawning;
+                StartCoroutine(WaitForNextWave());
+            }
         }
     }
 
-    public void TurretKilled(){
+    public void TurretKilled()
+    {
         turretAmount--;
-        if(turretAmount == 0){
+        if (turretAmount == 0)
+        {
             LoseGame();
         }
     }
 
-    public IEnumerator WaitForNextWave() {
+    public IEnumerator WaitForNextWave()
+    {
         yield return new WaitForSeconds(timeToWait);
         StartCoroutine(spawner.Spawn());
+        gameState = GameState.GameStarted;
     }
 
-    public void LoseGame(){
+    public void LoseGame()
+    {
         gameState = GameState.GameFinished;
         endGameView.Show();
     }
 
-    public void RestartGame(){
+    public void RestartGame()
+    {
         toolBox.transform.parent = null;
         toolBox.transform.position = toolBoxPosition.position;
         timeToWait = 0;
         Enemy[] enemies = FindObjectsOfType<Enemy>();
-        foreach(Enemy e in  enemies){
+        foreach (Enemy e in enemies)
+        {
             e.Destroy();
         }
         PlayerController p = FindObjectOfType<PlayerController>();
         Destroy(p.gameObject);
         Turret[] turrets = FindObjectsOfType<Turret>();
-        foreach(Turret t in turrets){
+        foreach (Turret t in turrets)
+        {
             t.Init();
             turretAmount++;
         }

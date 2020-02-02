@@ -171,8 +171,8 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         translation_x = 0;
         translation_y = 0;
-        x = Input.GetAxis("Horizontal");
-        y = Input.GetAxis("Vertical");
+        x = Input.GetAxisRaw("Horizontal");
+        y = Input.GetAxisRaw("Vertical");
 
         if (x > 0)
         {

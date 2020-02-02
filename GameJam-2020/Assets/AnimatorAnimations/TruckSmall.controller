@@ -11,7 +11,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 365937163095041237}
-    m_Position: {x: 260, y: 90, z: 0}
+    m_Position: {x: 250, y: 70, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -28,7 +28,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Truck
+  m_Name: TruckSmall
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -64,7 +64,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b60915e2197779448919ec112d1d46f7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1b2caa402ba16b64ab00afd9479394f8, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

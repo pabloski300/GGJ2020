@@ -246,6 +246,42 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
 
     void Die()
     {
+                    if (HealthRelative > 0.66)
+            {
+                turret1.SetActive(true);
+                turret2.SetActive(false);
+                turret3.SetActive(false);
+                turret4.SetActive(false);
+            }
+            else if (HealthRelative < 0.66 && HealthRelative > 0.33)
+            {
+                turret1.SetActive(false);
+                turret2.SetActive(true);
+                turret3.SetActive(false);
+                turret4.SetActive(false);
+                var emission = smoke.emission;
+                emission.rateOverTime = 1;
+            }
+            else if (HealthRelative < 0.33)
+            {
+                turret1.SetActive(false);
+                turret2.SetActive(false);
+                turret3.SetActive(true);
+                turret4.SetActive(false);
+                var emission = smoke.emission;
+                emission.rateOverTime = 2;
+            }
+            if (HealthRelative <= 0)
+            {
+                turret1.SetActive(false);
+                turret2.SetActive(false);
+                turret3.SetActive(false);
+                turret4.SetActive(true);
+                headUp.SetActive(false);
+                headDown.SetActive(false);
+                var emission = smoke.emission;
+                emission.rateOverTime = 0;
+            }
         currentTarget = null;
         collider.enabled = false;
         GameManager.Instance.TurretKilled();
@@ -255,7 +291,9 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
 
     public void Repair(float repairAmount)
     {
+        
         currentHealth += repairAmount;
+        
         currentHealth = Mathf.Min(currentHealth, maxHealth);
         changeHealthEvent.Invoke(HealthRelative);
     }
@@ -264,6 +302,7 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
     {
         currentAmmo += ammo;
         currentAmmo = Mathf.Min(currentAmmo, maxAmmo);
+        
         changeAmmoEvent.Invoke(AmmunitionRelative);
     }
 
