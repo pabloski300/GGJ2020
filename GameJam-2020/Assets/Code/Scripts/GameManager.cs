@@ -140,7 +140,8 @@ public class GameManager : MonoBehaviour
     }
     public void EnemyKilled(){
         enemyNumber--;
-        if(enemyNumber == 0){
+        if(enemyNumber <= 0){
+            enemyNumber = 0;
             StartCoroutine(WaitForNextWave());
         }
     }
