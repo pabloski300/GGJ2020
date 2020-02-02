@@ -92,7 +92,7 @@ public class Spawner : MonoBehaviour
         float y = Random.Range(minMaxAerialHeightSpawn.x, minMaxAerialHeightSpawn.y);
         float x = Random.Range(minMaxAerialWidthSpawn.x, minMaxAerialWidthSpawn.y);
 
-        e.Spawn(new Vector3(-12, yInit, 0), new Vector3(x, y, 0));
+        e.Spawn(new Vector3(-20, yInit, 0), new Vector3(x, y, 0));
     }
 
     private void SpawnGround(Enemy e)
@@ -101,7 +101,7 @@ public class Spawner : MonoBehaviour
         float y = Random.Range(minMaxGroundHeightSpawn.x, minMaxGroundHeightSpawn.y);
         float x = Random.Range(minMaxGroundWidthSpawn.x, minMaxGroundWidthSpawn.y);
 
-        e.Spawn(new Vector3(-12, yInit, 0), new Vector3(x, y, 0));
+        e.Spawn(new Vector3(-20, yInit, 0), new Vector3(x, y, 0));
     }
 
     private void SpawnCircle(Enemy e)
@@ -110,7 +110,7 @@ public class Spawner : MonoBehaviour
         float y = Random.Range(minMaxAerialCircleHeightSpawn.x, minMaxAerialCircleHeightSpawn.y);
         float x = Random.Range(minMaxAerialCircleWidthSpawn.x, minMaxAerialCircleWidthSpawn.y);
 
-        e.Spawn(new Vector3(-12, yInit, 0), new Vector3(x, y, 0));
+        e.Spawn(new Vector3(-20, yInit, 0), new Vector3(x, y, 0));
     }
 
     private void OnDrawGizmos()

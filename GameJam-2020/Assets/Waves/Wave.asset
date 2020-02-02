@@ -26,12 +26,4 @@ MonoBehaviour:
       type: 3}
     minAmount: 1
     maxAmount: 1
-  - enemyType: {fileID: 8444187974996264586, guid: 4322c02d6bd886648bd5eede235eecdb,
-      type: 3}
-    minAmount: 1
-    maxAmount: 1
-  - enemyType: {fileID: 8458470791012828477, guid: 731c93e02c5a8404aacd7903254cacd2,
-      type: 3}
-    minAmount: 1
-    maxAmount: 1
   timeToNextWave: 10
