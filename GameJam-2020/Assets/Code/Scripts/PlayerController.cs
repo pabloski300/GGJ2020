@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 //Prueba.
 public class PlayerController : MonoBehaviour, IDamage
@@ -26,13 +27,14 @@ public class PlayerController : MonoBehaviour, IDamage
     Transform obj;
 
     //Active sprites
-    Transform carrying_body;
+    Transform carrying_arm;
     Transform body;
     GameObject carried_item;
 
     Animator body_animator;
     SpriteRenderer body_renderer;
     bool facing_left;
+    bool last_facing;
 
     //Item List
     List<GameObject> items_to_carry;
@@ -41,6 +43,12 @@ public class PlayerController : MonoBehaviour, IDamage
     //Item spawn positions
     [SerializeField, FoldoutGroup("Stats")]
     private float drop_distance;
+    [SerializeField, FoldoutGroup("Stats")]
+    private float carry_offset_x;
+    [SerializeField, FoldoutGroup("Stats")]
+    private float drop_offset;
+    private GameObject scenary;
+    Vector3 scenary_center, scenary_half; 
 
     //Repair
     bool repairing;
@@ -86,7 +94,7 @@ public class PlayerController : MonoBehaviour, IDamage
         body = transform.GetChild(0);
         body_animator = body.GetComponent<Animator>();
         body_renderer = body.GetComponent<SpriteRenderer>();
-        carrying_body = transform.GetChild(1);
+        carrying_arm = transform.GetChild(1);
 
         repair_counter = timeToRepair;
         load_counter = timeToLoad;
@@ -99,6 +107,11 @@ public class PlayerController : MonoBehaviour, IDamage
         secondary_down = false;
         facing_left = false;
         obj = null;
+
+        scenary = GameObject.FindGameObjectWithTag("scenary");
+        TilemapRenderer tr = scenary.GetComponent<TilemapRenderer>();
+        scenary_center = tr.bounds.center;
+        scenary_half = tr.bounds.extents;
 
         footSteps.Init();
         rechargeSound.Init();
@@ -141,6 +154,8 @@ public class PlayerController : MonoBehaviour, IDamage
         else if (repairing)
         {
             repairing = false;
+            carrying_arm.gameObject.SetActive(true);
+            body_animator.SetBool("Repairing", false);
             repair_counter = timeToRepair;
         }
 
@@ -190,10 +205,21 @@ public class PlayerController : MonoBehaviour, IDamage
             currentTimeBetweenFootsteps = timeBetweenFootsteps;
         }
 
+        last_facing = facing_left;
+
         if (x < 0) facing_left = true;
         else if (x > 0) facing_left = false;
 
         body_renderer.flipX = facing_left;
+        carrying_arm.GetComponent<SpriteRenderer>().flipX = facing_left;
+
+        if (carrying_arm.transform.childCount > 0 && last_facing != facing_left) {
+            Vector3 pos = carrying_arm.transform.GetChild(0).position;
+            if (facing_left)
+                carrying_arm.transform.GetChild(0).position -= new Vector3(carry_offset_x, 0, 0);
+            else
+                carrying_arm.transform.GetChild(0).position += new Vector3(carry_offset_x,0,0);
+        }
 
         if (translation_x != 0 || translation_y != 0) body_animator.SetBool("Walking", true);
         else body_animator.SetBool("Walking", false);
@@ -218,14 +244,17 @@ public class PlayerController : MonoBehaviour, IDamage
 
                     Destroy(carried_item);
                     carried_obj = item.none;
-                    carrying_body.gameObject.SetActive(false);
-                    body.gameObject.SetActive(true);
+                    body_animator.SetBool("Carrying", false);
+                    carrying_arm.gameObject.SetActive(false);
 
                     loading_bullets = true;
                     break;
                 case item.repair_kit:
                     Debug.Log("Repairing Tower");
                     repairing = true;
+                    if (facing_left) body.GetComponent<SpriteRenderer>().flipX = true;
+                    body_animator.SetBool("Repairing", true);
+                    carrying_arm.gameObject.SetActive(false);
                     break;
             }
 
@@ -248,14 +277,19 @@ public class PlayerController : MonoBehaviour, IDamage
             t.Repair(repairAmount);
             repair_counter = timeToRepair;
 
-            if (t.HealthRelative == 1) repairing = false;
+            if (t.HealthRelative == 1)
+            {
+                repairing = false;
+                carrying_arm.gameObject.SetActive(true);
+                body_animator.SetBool("Repairing", false);
+            }
         }
     }
 
     void Pick()
     {
-        carrying_body.gameObject.SetActive(true);
-        body.gameObject.SetActive(false);
+        body_animator.SetBool("Carrying", true);
+        carrying_arm.gameObject.SetActive(true);
 
         //Workaroud
         if (obj != items_to_carry[0].transform) return;
@@ -282,6 +316,8 @@ public class PlayerController : MonoBehaviour, IDamage
                 }
                 break;
             case "repair_kit":
+                if (bullet_packages > 0) break;
+
                 grabRepairKit.Play(this.transform);
                 SetCarried();
                 carried_obj = item.repair_kit;
@@ -300,8 +336,9 @@ public class PlayerController : MonoBehaviour, IDamage
             carried_item.GetComponent<SpriteRenderer>().sprite = ammo_box;
 
         carried_item.GetComponent<Collider2D>().enabled = false;
-        carried_item.GetComponent<SpriteRenderer>().sortingOrder = carrying_body.GetComponent<SpriteRenderer>().sortingOrder + 1;
-        carried_item.transform.SetParent(carrying_body);
+        carried_item.transform.position = transform.position + new Vector3(0, 0.75f, 0);
+        carried_item.transform.SetParent(carrying_arm);
+        
     }
 
     void Drop()
@@ -317,8 +354,8 @@ public class PlayerController : MonoBehaviour, IDamage
         else bullet_packages++;
 
         //Set item down
-        carrying_body.gameObject.SetActive(false);
-        body.gameObject.SetActive(true);
+        body_animator.SetBool("Carrying", false);
+        carrying_arm.gameObject.SetActive(false);
 
         for (int i = 0; i < bullet_packages; i++)
         {
@@ -336,6 +373,16 @@ public class PlayerController : MonoBehaviour, IDamage
         float angle = Random.Range(0, 359) * Mathf.Deg2Rad;
         float x = transform.position.x + drop_distance * Mathf.Cos(angle);
         float y = transform.position.y + drop_distance * Mathf.Sin(angle);
+
+        if (x > scenary_center.x + scenary_half.x - drop_offset)
+            x = scenary_center.x + scenary_half.x - drop_offset;
+        else if (x < scenary_center.x - scenary_half.x + drop_offset)
+            x = scenary_center.x - scenary_half.x + drop_offset;
+
+        if (y > scenary_center.y + scenary_half.y - drop_offset)
+            y = scenary_center.y + scenary_half.y - drop_offset;
+        else if (y < scenary_center.y - scenary_half.y + drop_offset)
+            y = scenary_center.y - scenary_half.y + drop_offset;
 
         return new Vector2(x, y);
     }
