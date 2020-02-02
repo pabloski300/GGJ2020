@@ -5,7 +5,7 @@
             <value>Reload</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>0</value>
         </property>
         <relationship name="folder">
             <destination>{6dc69fa8-f0c0-40e0-b58b-a657857897db}</destination>
@@ -116,10 +116,13 @@
     <object class="MixerBusEffectChain" id="{09e45a20-192a-4dee-827f-cb2e26b57a04}">
         <relationship name="effects">
             <destination>{b4d6c267-cd77-4c27-9570-304170e9d33e}</destination>
-            <destination>{82428443-7c84-4fcb-b160-2c46fd47306d}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{270dcdfc-2f5b-4549-beb8-9b602da61440}"/>
+    <object class="MixerBusPanner" id="{270dcdfc-2f5b-4549-beb8-9b602da61440}">
+        <property name="outputFormatOverridden">
+            <value>true</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{71f5ba35-f297-496b-a4a1-3d2534ced084}"/>
     <object class="SingleSound" id="{1a07a226-a723-41ca-bb78-f121c7d362f9}">
         <relationship name="audioFile">
@@ -148,6 +151,5 @@
     </object>
     <object class="MixerBusPanner" id="{e8a5d854-bad7-4ecb-9b19-6fb5d6a6a207}"/>
     <object class="MixerBusFader" id="{b4d6c267-cd77-4c27-9570-304170e9d33e}"/>
-    <object class="SpatialiserEffect" id="{82428443-7c84-4fcb-b160-2c46fd47306d}"/>
     <object class="MixerBusFader" id="{97e99cd0-19b9-47b3-a15b-47f5e149782a}"/>
 </objects>

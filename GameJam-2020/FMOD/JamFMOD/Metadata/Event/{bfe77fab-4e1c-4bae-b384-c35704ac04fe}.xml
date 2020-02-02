@@ -5,7 +5,7 @@
             <value>Explosion</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>0</value>
         </property>
         <relationship name="folder">
             <destination>{74ae18d9-e439-4654-9746-367054f41b76}</destination>
@@ -170,10 +170,13 @@
     <object class="MixerBusEffectChain" id="{53985cee-bced-49fe-8356-f0742544f8f3}">
         <relationship name="effects">
             <destination>{40e507f4-71fd-4dd0-8152-41303dcab755}</destination>
-            <destination>{0443a610-d9c4-4a19-8c46-e252df1cdbee}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{6c7fe513-8601-4cf3-919c-ae450112be34}"/>
+    <object class="MixerBusPanner" id="{6c7fe513-8601-4cf3-919c-ae450112be34}">
+        <property name="outputFormatOverridden">
+            <value>true</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{daebd93c-fd23-4a91-9beb-2a05f0d01962}"/>
     <object class="SingleSound" id="{8eecff67-ca87-41a3-b4f4-9a2ed3641a51}">
         <relationship name="audioFile">
@@ -236,7 +239,6 @@
     </object>
     <object class="MixerBusPanner" id="{385028c4-8453-4793-b4e7-79844b044e1f}"/>
     <object class="MixerBusFader" id="{40e507f4-71fd-4dd0-8152-41303dcab755}"/>
-    <object class="SpatialiserEffect" id="{0443a610-d9c4-4a19-8c46-e252df1cdbee}"/>
     <object class="MixerBusFader" id="{693b5701-92f9-46fd-9454-2c3101d8ec1b}"/>
     <object class="AutomationCurve" id="{1efea2c5-2076-4ea5-96ef-d2c3d4117cb8}">
         <relationship name="parameter">
