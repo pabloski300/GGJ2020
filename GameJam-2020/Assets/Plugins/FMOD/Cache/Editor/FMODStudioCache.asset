@@ -13,11 +13,51 @@ MonoBehaviour:
   m_Name: bank:/Master Bank.strings.bank
   m_EditorClassIdentifier: 
   Path: FMOD\JamFMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 637161967105949144
+  lastModified: 637162073288593495
   LoadResult: 0
   FileSizes:
   - Name: Desktop
     Value: 1602
+  Exists: 1
+--- !u!114 &-8843908398996215629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Generic/Impact
+  m_EditorClassIdentifier: 
+  Path: event:/Generic/Impact
+  guid: 237581ee13af4941924430e9502aa44a
+  Banks:
+  - {fileID: 6837988904088262250}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 374
+--- !u!114 &-8596332138241694625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explosion/Small-Big
+  m_EditorClassIdentifier: 
+  Name: Small-Big
+  Min: 0
+  Max: 1
+  Default: 0
   Exists: 1
 --- !u!114 &-7964690712517245269
 MonoBehaviour:
@@ -39,7 +79,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 13378
   Exists: 0
---- !u!114 &-6540058673490041521
+--- !u!114 &-7453932729384375547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,67 +89,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Actions/Reload
+  m_Name: event:/UI/Pass
   m_EditorClassIdentifier: 
-  Path: event:/Actions/Reload
-  guid: 73e989b56165b843a676c1881ae6abfb
-  Banks:
-  - {fileID: -4213032837424358588}
+  Path: event:/UI/Pass
+  guid: 9294d25ff53f34488f186cf9c16e3224
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 358
---- !u!114 &-5980174281234985608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Enemy _Helicopter/Shoot
-  m_EditorClassIdentifier: 
-  Path: event:/Enemy _Helicopter/Shoot
-  guid: d627d8a3d89b3244b5cadbb239a770f8
-  Banks:
-  - {fileID: -4213032837424358588}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters:
-  - {fileID: 2643917823950106955}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 220
---- !u!114 &-5542873665486690518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/UI/Out
-  m_EditorClassIdentifier: 
-  Path: event:/UI/Out
-  guid: 4eaf4739cb60c34fb19031293ea65d60
-  Banks:
-  - {fileID: -4213032837424358588}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 565
---- !u!114 &-5531971869937438193
+  Length: 0
+--- !u!114 &-6750276539110821659
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,7 +116,7 @@ MonoBehaviour:
   Path: event:/UI/Exit
   guid: 023d959620632c4c9bed0f2abd1faa0f
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -132,7 +124,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 326
---- !u!114 &-4922942180675653916
+--- !u!114 &-4986197618753006576
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,20 +134,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Generic/Explosion
+  m_Name: event:/Actions/Reload
   m_EditorClassIdentifier: 
-  Path: event:/Generic/Explosion
-  guid: ab7fe7bf1c4eae4bb384c35704ac04fe
+  Path: event:/Actions/Reload
+  guid: 73e989b56165b843a676c1881ae6abfb
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters:
-  - {fileID: 4212571542530829745}
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3360
+  Length: 358
 --- !u!114 &-4574519773627476890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +167,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 13378
   Exists: 0
---- !u!114 &-4563389951294793030
+--- !u!114 &-4263194416355897702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,19 +177,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Actions/Step
+  m_Name: event:/Actions/PickUp Ammo
   m_EditorClassIdentifier: 
-  Path: event:/Actions/Step
-  guid: 9b626970b1c95149a96742afb42bca0f
+  Path: event:/Actions/PickUp Ammo
+  guid: a92fb4faa2941f43bbad5c7ff81eea06
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 283
 --- !u!114 &-4213032837424358588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,13 +203,30 @@ MonoBehaviour:
   m_Name: bank:/Master Bank.bank
   m_EditorClassIdentifier: 
   Path: C:\Git\GGJ2020\GameJam-2020\FMOD\JamFMOD\Build\Desktop\Master Bank.bank
-  lastModified: 637161967105939071
+  lastModified: 637160582811641199
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1357120
-  Exists: 1
---- !u!114 &-4033914870911947400
+    Value: 13378
+  Exists: 0
+--- !u!114 &-2898263780860658195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explosion/Small-Big
+  m_EditorClassIdentifier: 
+  Name: Small-Big
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-2349285490677140610
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,20 +236,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Actions/Fix
+  m_Name: event:/Torretas/Shoot
   m_EditorClassIdentifier: 
-  Path: event:/Actions/Fix
-  guid: c5ee0d7f3698a5449f155eee9febd8a3
+  Path: event:/Torretas/Shoot
+  guid: 0c7cd7125b92644e9435fb385d63c298
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
---- !u!114 &-3802136291012055898
+  Length: 2232
+--- !u!114 &-1432853173465019752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/In
+  m_EditorClassIdentifier: 
+  Path: event:/UI/In
+  guid: 9294d25ff53f34488f186cf9c16e3224
+  Banks:
+  - {fileID: 6837988904088262250}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 733
+--- !u!114 &-760847671680593265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,7 +287,7 @@ MonoBehaviour:
   Path: event:/Enemy_Tank/Shoot
   guid: 178898ffe681ad4bb3bb3c1f6eda8f4b
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -264,7 +295,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2750
---- !u!114 &-2338671437706308729
+--- !u!114 &-383644603816208561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,20 +305,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/UI/Check
+  m_Name: event:/Actions/Step
   m_EditorClassIdentifier: 
-  Path: event:/UI/Check
-  guid: e1f084a224ad6c4c9f819687e33bcae8
+  Path: event:/Actions/Step
+  guid: 9b626970b1c95149a96742afb42bca0f
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 156
---- !u!114 &-1827427806978121395
+  Length: 169
+--- !u!114 &-167087484736216926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -302,7 +333,7 @@ MonoBehaviour:
   Path: event:/Enemy_Jet/Shoot
   guid: 43ebcdaf0cb02b49b377009fcffe42b1
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -324,33 +355,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -9087173361617540311}
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   EditorEvents:
-  - {fileID: -5531971869937438193}
-  - {fileID: 5105101737983868716}
-  - {fileID: 4193199568487487490}
-  - {fileID: -3802136291012055898}
-  - {fileID: 5422834109203582565}
-  - {fileID: 7320264529669280126}
-  - {fileID: -1827427806978121395}
-  - {fileID: 8842618421527543058}
-  - {fileID: -6540058673490041521}
-  - {fileID: -4563389951294793030}
-  - {fileID: 1804401842560848255}
-  - {fileID: -4922942180675653916}
-  - {fileID: 7230836809335488893}
-  - {fileID: 624575744306199455}
-  - {fileID: 3037238255823623539}
-  - {fileID: -4033914870911947400}
-  - {fileID: -5980174281234985608}
-  - {fileID: -2338671437706308729}
-  - {fileID: -5542873665486690518}
-  - {fileID: 680558012017734388}
+  - {fileID: -6750276539110821659}
+  - {fileID: -2349285490677140610}
+  - {fileID: 473847069610387228}
+  - {fileID: -760847671680593265}
+  - {fileID: -8843908398996215629}
+  - {fileID: 8627042647974312526}
+  - {fileID: -167087484736216926}
+  - {fileID: 3501100702603231076}
+  - {fileID: -4986197618753006576}
+  - {fileID: -383644603816208561}
+  - {fileID: -4263194416355897702}
+  - {fileID: 5862924588649280532}
+  - {fileID: 1103979236142697096}
+  - {fileID: 1913909814334578580}
+  - {fileID: 7726870358647330297}
+  - {fileID: 1356389150450444196}
+  - {fileID: 6150801092881276154}
+  - {fileID: 1508175446478675434}
+  - {fileID: 702760562060185094}
+  - {fileID: -1432853173465019752}
   MasterBanks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   StringsBanks:
   - {fileID: -9087173361617540311}
-  stringsBankWriteTime: 637161967105949144
+  stringsBankWriteTime: 637162073288593495
   cacheVersion: 3
 --- !u!114 &135321907806991513
 MonoBehaviour:
@@ -372,7 +403,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 13378
   Exists: 1
---- !u!114 &624575744306199455
+--- !u!114 &473847069610387228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,20 +413,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Actions/PickUp Fix
+  m_Name: event:/Torretas/Movement
   m_EditorClassIdentifier: 
-  Path: event:/Actions/PickUp Fix
-  guid: c103d58ecdab3b4abd325abd3acef60b
+  Path: event:/Torretas/Movement
+  guid: 130b3d3ba170be4fb6b8511c059f1014
   Banks:
-  - {fileID: -4213032837424358588}
-  IsStream: 0
+  - {fileID: 6837988904088262250}
+  IsStream: 1
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 500
---- !u!114 &680558012017734388
+  Length: 9472
+--- !u!114 &702760562060185094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -405,19 +436,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/UI/In
+  m_Name: event:/UI/Out
   m_EditorClassIdentifier: 
-  Path: event:/UI/In
-  guid: 9294d25ff53f34488f186cf9c16e3224
+  Path: event:/UI/Out
+  guid: 4eaf4739cb60c34fb19031293ea65d60
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 733
+  Length: 565
+--- !u!114 &1103979236142697096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Enemy _Helicopter/Movement
+  m_EditorClassIdentifier: 
+  Path: event:/Enemy _Helicopter/Movement
+  guid: b56a7498f8f7b24faf51582addda1552
+  Banks:
+  - {fileID: 6837988904088262250}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 17383
 --- !u!114 &1189076256406911711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +494,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &1804401842560848255
+--- !u!114 &1356389150450444196
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -450,20 +504,66 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Actions/PickUp Ammo
+  m_Name: event:/Actions/Fix
   m_EditorClassIdentifier: 
-  Path: event:/Actions/PickUp Ammo
-  guid: a92fb4faa2941f43bbad5c7ff81eea06
+  Path: event:/Actions/Fix
+  guid: c5ee0d7f3698a5449f155eee9febd8a3
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 283
---- !u!114 &2643917823950106955
+  Length: 0
+--- !u!114 &1508175446478675434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Check
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Check
+  guid: e1f084a224ad6c4c9f819687e33bcae8
+  Banks:
+  - {fileID: 6837988904088262250}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 156
+--- !u!114 &1913909814334578580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Actions/PickUp Fix
+  m_EditorClassIdentifier: 
+  Path: event:/Actions/PickUp Fix
+  guid: c103d58ecdab3b4abd325abd3acef60b
+  Banks:
+  - {fileID: 6837988904088262250}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &2295656483836919237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -479,7 +579,7 @@ MonoBehaviour:
   Min: 0
   Max: 1000
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &2947066529444343212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +600,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 13378
   Exists: 0
---- !u!114 &3037238255823623539
+--- !u!114 &3501100702603231076
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -510,81 +610,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/UI/Accept
+  m_Name: event:/Enemy_Tank/Movement
   m_EditorClassIdentifier: 
-  Path: event:/UI/Accept
-  guid: c33d6b1ac2c5c14f81c1c192715e69c8
+  Path: event:/Enemy_Tank/Movement
+  guid: 4767608567294946bf54c238c3e06ffa
   Banks:
-  - {fileID: -4213032837424358588}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 4774
---- !u!114 &3231585311794896619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/UI/Pass
-  m_EditorClassIdentifier: 
-  Path: event:/UI/Pass
-  guid: 9294d25ff53f34488f186cf9c16e3224
-  Banks: []
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &4193199568487487490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Torretas/Movement
-  m_EditorClassIdentifier: 
-  Path: event:/Torretas/Movement
-  guid: 130b3d3ba170be4fb6b8511c059f1014
-  Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 9472
---- !u!114 &4212571542530829745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Explosion/Small-Big
-  m_EditorClassIdentifier: 
-  Name: Small-Big
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
+  Length: 22469
 --- !u!114 &4937207294830362915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,7 +643,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 13378
   Exists: 0
---- !u!114 &5105101737983868716
+--- !u!114 &5862924588649280532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -615,20 +653,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Torretas/Shoot
+  m_Name: event:/Generic/Explosion
   m_EditorClassIdentifier: 
-  Path: event:/Torretas/Shoot
-  guid: 0c7cd7125b92644e9435fb385d63c298
+  Path: event:/Generic/Explosion
+  guid: ab7fe7bf1c4eae4bb384c35704ac04fe
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -8596332138241694625}
   MinDistance: 1
   MaxDistance: 20
-  Length: 2232
---- !u!114 &5422834109203582565
+  Length: 3360
+--- !u!114 &6150801092881276154
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -638,37 +677,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Generic/Impact
+  m_Name: event:/Enemy _Helicopter/Shoot
   m_EditorClassIdentifier: 
-  Path: event:/Generic/Impact
-  guid: 237581ee13af4941924430e9502aa44a
+  Path: event:/Enemy _Helicopter/Shoot
+  guid: d627d8a3d89b3244b5cadbb239a770f8
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 6388351154444494271}
   MinDistance: 1
   MaxDistance: 20
-  Length: 374
---- !u!114 &6312212916934935971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Explosion/Small-Big
-  m_EditorClassIdentifier: 
-  Name: Small-Big
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &6765653588602005409
+  Length: 220
+--- !u!114 &6388351154444494271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -684,8 +707,8 @@ MonoBehaviour:
   Min: 0
   Max: 1000
   Default: 0
-  Exists: 0
---- !u!114 &7139260867483802356
+  Exists: 1
+--- !u!114 &6837988904088262250
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -694,15 +717,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Explosion/Small-Big
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master Bank.bank
   m_EditorClassIdentifier: 
-  Name: Small-Big
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &7230836809335488893
+  Path: C:\Users\javie\Desktop\GlobalGameJam\GameJam-2020\FMOD\JamFMOD\Build\Desktop\Master
+    Bank.bank
+  lastModified: 637162073288573564
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1362336
+  Exists: 1
+--- !u!114 &7726870358647330297
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -712,20 +738,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Enemy _Helicopter/Movement
+  m_Name: event:/UI/Accept
   m_EditorClassIdentifier: 
-  Path: event:/Enemy _Helicopter/Movement
-  guid: b56a7498f8f7b24faf51582addda1552
+  Path: event:/UI/Accept
+  guid: c33d6b1ac2c5c14f81c1c192715e69c8
   Banks:
-  - {fileID: -4213032837424358588}
-  IsStream: 1
+  - {fileID: 6837988904088262250}
+  IsStream: 0
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 17383
---- !u!114 &7320264529669280126
+  Length: 4774
+--- !u!114 &8627042647974312526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -740,7 +766,7 @@ MonoBehaviour:
   Path: event:/Enemy_Jet/Movement
   guid: 36bce8ba1dc8d34f91af38c70e1959ac
   Banks:
-  - {fileID: -4213032837424358588}
+  - {fileID: 6837988904088262250}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -748,43 +774,3 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 23062
---- !u!114 &7720590214698489345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Shoot/ROF
-  m_EditorClassIdentifier: 
-  Name: ROF
-  Min: 0
-  Max: 1000
-  Default: 0
-  Exists: 0
---- !u!114 &8842618421527543058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Enemy_Tank/Movement
-  m_EditorClassIdentifier: 
-  Path: event:/Enemy_Tank/Movement
-  guid: 4767608567294946bf54c238c3e06ffa
-  Banks:
-  - {fileID: -4213032837424358588}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 22469

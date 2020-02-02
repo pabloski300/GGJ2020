@@ -44,6 +44,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Parallax_Sky
+    uniqueID: 2672301737
+    locked: 0
+  - name: Parallax_Cloud
+    uniqueID: 329883253
+    locked: 0
+  - name: Parallax_Far
+    uniqueID: 306659213
+    locked: 0
+  - name: Parallax_Near
+    uniqueID: 3958910717
+    locked: 0
   - name: Foreground
     uniqueID: 753368687
     locked: 0
