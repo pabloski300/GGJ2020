@@ -181,12 +181,12 @@ public class Turret : SerializedMonoBehaviour, IDamage, IShooter
         if (projectile == null)
         {
             IShootable newProjectile = ((IShootable)Instantiate((Object)projectilePrefab, this.transform.position, Quaternion.identity));
-            newProjectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, shootPoint.position);
+            newProjectile.Shoot(projectileSpeed, currentTarget.transform.position - shootPoint.position, projectileDamage, this, shootPoint.position);
         }
         else
         {
             projectilePool.Remove(projectile);
-            projectile.Shoot(projectileSpeed, currentTarget.transform.position - this.transform.position, projectileDamage, this, shootPoint.position);
+            projectile.Shoot(projectileSpeed, currentTarget.transform.position - shootPoint.position, projectileDamage, this, shootPoint.position);
         }
         currentTarget = null;
     }

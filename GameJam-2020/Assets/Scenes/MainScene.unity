@@ -460,6 +460,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fc87a67820fafb4e89ffcfbe89bdf2e, type: 3}
+--- !u!1 &735583447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6932043438145412434, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6932043439239048695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &735583453
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735583447}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3206defdef82e274d9abef3d7d46a8a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &825869007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,7 +1370,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -776590613
   m_SortingLayer: 6
-  m_SortingOrder: -1
+  m_SortingOrder: -3
   m_Sprite: {fileID: -1899886735101005593, guid: bf795727c91e0104c934b88c0aef972d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1379,6 +1404,85 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: groupWaves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: groupWaves.Array.data[1].waves.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: groupWaves.Array.data[1].maxWave
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: groupWaves.Array.data[1].minWave
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: groupWaves.Array.data[1].waves.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f5e4e3ca9d35b2429f8627438be1481,
+        type: 2}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: groupWaves.Array.data[1].waves.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 043b9dd53437a3c43ad169b38c5dedef,
+        type: 2}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: groupWaves.Array.data[1].waves.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f138fe413fa2414e839c371f8c70b28,
+        type: 2}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: groupWaves.Array.data[1].waves.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 83959f02d77faf846abe4463f4032221,
+        type: 2}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: minMaxGroundWidthSpawn.y
+      value: 12.5658245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: minMaxGroundHeightSpawn.y
+      value: -5.606606
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: minMaxGroundWidthSpawn.x
+      value: -11.801753
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: minMaxAerialHeightSpawn.y
+      value: 7.196696
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: minMaxAerialHeightSpawn.x
+      value: 4.7186375
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: minMaxAerialWidthSpawn.x
+      value: -11.595248
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734362191225771460, guid: 75291f21464ead84eaeaf41e7715a245,
+        type: 3}
+      propertyPath: minMaxAerialWidthSpawn.y
+      value: 12.359319
+      objectReference: {fileID: 0}
     - target: {fileID: 1734362191225771461, guid: 75291f21464ead84eaeaf41e7715a245,
         type: 3}
       propertyPath: m_Name
@@ -1603,9 +1707,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
+      propertyPath: OnClick.Animators.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
       propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1190943645}
+    - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: OnClick.ButtonAnimationType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: OnClick.PresetCategory
+      value: Uncategorized
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: OnClick.PresetName
+      value: Default
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.By.y
+      value: -0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Vibrato
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Elasticity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Duration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: OnClick.Animators.Array.data[0].Animator
+      value: 
+      objectReference: {fileID: 735583453}
+    - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: OnClick.StateAnimation.Move.Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932043438145412447, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
+        type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6932043438146237813, guid: d3238aef39f34b44f8a05c7b6df0cdf5,
         type: 3}
       propertyPath: ShowProgressor

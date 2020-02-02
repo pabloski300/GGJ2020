@@ -22,8 +22,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   enemies:
-  - enemyType: {fileID: -8875946128979456578, guid: ef62d87cb688ec848990aca9ce06c2ea,
+  - enemyType: {fileID: 8458470791012828477, guid: 731c93e02c5a8404aacd7903254cacd2,
       type: 3}
-    minAmount: 1
-    maxAmount: 1
-  timeToNextWave: 10
+    minAmount: 3
+    maxAmount: 4
+  timeToNextWave: 5

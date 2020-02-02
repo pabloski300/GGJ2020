@@ -29,36 +29,43 @@ public class Projectile : MonoBehaviour, IShootable
 
     private void Update()
     {
-        if (goingToHit != null)
+        try
         {
-            goingToHit.ReceiveDamage(damageAmount);
-            Die();
-            return;
-        }
+            if (goingToHit != null)
+            {
+                hitSound.Play(this.transform);
+                goingToHit?.ReceiveDamage(damageAmount);
+                Die();
+                return;
+            }
 
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, direction, speed * Time.deltaTime, collisionLayers);
-        if (hit.collider != null)
-        {
-            this.transform.position = hit.point;
-            this.goingToHit = hit.collider.GetComponent<IDamage>();
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, direction, speed * Time.deltaTime, collisionLayers);
+            if (hit.collider != null)
+            {
+                this.transform.position = hit.point;
+                this.goingToHit = hit.collider.GetComponent<IDamage>();
+            }
+            else
+            {
+                this.transform.Translate(direction * speed * Time.deltaTime, Space.World);
+            }
+            if (currentTimeAlive >= maxTimeAlive)
+            {
+                Die();
+            }
+            else
+            {
+                currentTimeAlive += Time.deltaTime;
+            }
         }
-        else
-        {
-            this.transform.Translate(direction * speed * Time.deltaTime, Space.World);
-        }
-        if (currentTimeAlive >= maxTimeAlive)
+        catch
         {
             Die();
-        }
-        else
-        {
-            currentTimeAlive += Time.deltaTime;
         }
     }
 
     private void Die()
     {
-        hitSound.Play(this.transform);
         goingToHit = null;
         currentTimeAlive = 0;
         this.gameObject.SetActive(false);
