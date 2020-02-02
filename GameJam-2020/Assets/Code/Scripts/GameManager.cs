@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     private UIView startView;
     [BoxGroup("Config Fields"), SerializeField]
     private UIView tutorialView;
+        [BoxGroup("Config Fields"), SerializeField]
+    private Parallax parallax;
 
     private int enemyNumber = 0;
     private float timeToWait;
@@ -150,6 +152,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void RestartGame(){
+        parallax.MasterSpeed = 1;
         timeToWait = 0;
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         foreach(Enemy e in  enemies){

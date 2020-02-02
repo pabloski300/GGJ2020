@@ -10,7 +10,8 @@ public class Parallax : MonoBehaviour
     public GameObject near;
 
     public float master_speed;
-    public float [] parallax_speed;
+    public float MasterSpeed { set { master_speed = value; } }
+    public float[] parallax_speed;
 
     private GameObject[] background1;
     private GameObject[] background2;
@@ -20,11 +21,11 @@ public class Parallax : MonoBehaviour
     void Start()
     {
         Vector3 position = transform.position;
-        background1 = new GameObject[4]{ Instantiate(sky), Instantiate(clouds), Instantiate(far), Instantiate(near)};
+        background1 = new GameObject[4] { Instantiate(sky), Instantiate(clouds), Instantiate(far), Instantiate(near) };
         background2 = new GameObject[4] { Instantiate(sky), Instantiate(clouds), Instantiate(far), Instantiate(near) };
 
         initial_position_x = position.x;
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             //Parent camera
             background1[i].transform.position = new Vector3(position.x, position.y, 0);
@@ -45,16 +46,16 @@ public class Parallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             background1[i].transform.position -= new Vector3(master_speed * parallax_speed[i] * Time.deltaTime, 0, 0);
             background2[i].transform.position -= new Vector3(master_speed * parallax_speed[i] * Time.deltaTime, 0, 0);
 
-            if (background1[i].transform.position.x <= initial_position_x -background1[i].GetComponent<SpriteRenderer>().bounds.extents.x * 2)
+            if (background1[i].transform.position.x <= initial_position_x - background1[i].GetComponent<SpriteRenderer>().bounds.extents.x * 2)
             {
                 background1[i].transform.position = new Vector3(initial_position_x, background1[i].transform.position.y, 0);
                 background2[i].transform.position = new Vector3(initial_position_x + background1[i].GetComponent<SpriteRenderer>().bounds.extents.x * 2, background2[i].transform.position.y, 0);
             }
-        }   
+        }
     }
 }

@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 6932043438145412446}
   - component: {fileID: 6932043438145412447}
   - component: {fileID: 6932043438145412432}
+  - component: {fileID: 1925047492}
   m_Layer: 0
   m_Name: UIButton
   m_TagString: Untagged
@@ -1195,6 +1196,17 @@ MonoBehaviour:
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1925047492}
+            m_MethodName: Play
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
@@ -2625,6 +2637,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1925047492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6932043438145412434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce07b5385c278c4fa09496cc08b6a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    name: 
+    fmodFile: event:/UI/Accept
+    parameters: []
 --- !u!1 &6932043438146237814
 GameObject:
   m_ObjectHideFlags: 0
@@ -3216,6 +3244,7 @@ GameObject:
   - component: {fileID: 6932043438347219602}
   - component: {fileID: 6932043438347219603}
   - component: {fileID: 6932043438347219604}
+  - component: {fileID: 771451134}
   m_Layer: 0
   m_Name: UIToggle
   m_TagString: Untagged
@@ -3803,6 +3832,17 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
+          - m_Target: {fileID: 771451134}
+            m_MethodName: Play
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       GameEvents: []
       SoundData:
         SoundSource: 0
@@ -3829,6 +3869,17 @@ MonoBehaviour:
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 771451134}
+            m_MethodName: Play
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
@@ -4494,6 +4545,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &771451134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6932043438347219606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce07b5385c278c4fa09496cc08b6a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    name: 
+    fmodFile: event:/UI/Check
+    parameters: []
 --- !u!1 &6932043438465354275
 GameObject:
   m_ObjectHideFlags: 0
@@ -5994,7 +6061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430de3b0bf9ce80429c0e15195a31a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 339665307253243248, guid: f28a767feffeb7a4fb71dfd69a8a7fc0, type: 3}
+  player: {fileID: 119962577460157222, guid: f28a767feffeb7a4fb71dfd69a8a7fc0, type: 3}
   turretAmount: 4
   spawnPosition: {fileID: 0}
   repairTexts:
@@ -6010,6 +6077,7 @@ MonoBehaviour:
   titleView: {fileID: 6932043438652469952}
   startView: {fileID: 6932043439340869484}
   tutorialView: {fileID: 6932043439421707692}
+  parallax: {fileID: 0}
 --- !u!1 &6932043438982611050
 GameObject:
   m_ObjectHideFlags: 0
@@ -7378,6 +7446,8 @@ GameObject:
   - component: {fileID: 6932043439395062851}
   - component: {fileID: 6932043439395062852}
   - component: {fileID: 6932043439395062853}
+  - component: {fileID: 4848029545081903838}
+  - component: {fileID: 7472751058279508931}
   m_Layer: 0
   m_Name: View - StartText
   m_TagString: Untagged
@@ -7616,7 +7686,18 @@ MonoBehaviour:
         CustomSortingLayer: Default
       Event:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 4848029545081903838}
+            m_MethodName: Play
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       GameEvents: []
       SoundData:
         SoundSource: 0
@@ -7890,7 +7971,18 @@ MonoBehaviour:
         CustomSortingLayer: Default
       Event:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 4848029545081903838}
+            m_MethodName: Play
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       GameEvents: []
       SoundData:
         SoundSource: 0
@@ -7915,6 +8007,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6932043439395062855}
   m_CullTransparentMesh: 0
+--- !u!114 &4848029545081903838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6932043439395062855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce07b5385c278c4fa09496cc08b6a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    name: 
+    fmodFile: event:/UI/In
+    parameters: []
+--- !u!114 &7472751058279508931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6932043439395062855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce07b5385c278c4fa09496cc08b6a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    name: 
+    fmodFile: event:/UI/Out
+    parameters: []
 --- !u!1 &6932043439401909164
 GameObject:
   m_ObjectHideFlags: 0

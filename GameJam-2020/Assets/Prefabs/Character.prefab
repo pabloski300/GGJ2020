@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 7038890038718920826}
   - component: {fileID: 3792463947465458641}
   - component: {fileID: 8383945341177382023}
-  m_Layer: 0
+  - component: {fileID: 665414201}
+  m_Layer: 8
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -776590613
+  m_SortingLayer: 6
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -175,6 +176,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.75}
   m_EdgeRadius: 0
+--- !u!61 &665414201
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119962577460157222}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.5, y: 2}
+    newSize: {x: 16, y: 24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 0.85}
+  m_EdgeRadius: 0
 --- !u!1 &136115084949166612
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +213,7 @@ GameObject:
   - component: {fileID: 2007550520619503337}
   - component: {fileID: 9208855584626016138}
   - component: {fileID: 7791400588141431974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Carrying_body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -244,8 +271,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -776590613
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: -4860275263339586047, guid: 8cae7571d78b81543be1bd953c74d315,
     type: 3}
@@ -333,7 +360,6 @@ GameObject:
   - component: {fileID: 8608772209173392802}
   - component: {fileID: 8321466851023620400}
   - component: {fileID: 2467346530992347776}
-  - component: {fileID: 4652709773511661000}
   m_Layer: 8
   m_Name: Body
   m_TagString: Player
@@ -391,8 +417,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -776590613
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -4860275263339586047, guid: 8cae7571d78b81543be1bd953c74d315,
     type: 3}
@@ -425,32 +451,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &4652709773511661000
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124800303513858027}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.038163304, y: 0.38175333}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5, y: 2}
-    newSize: {x: 16, y: 24}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5230186, y: 0.76350665}
-  m_EdgeRadius: 0
 --- !u!1 &8812053124507893324
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 904620657428063034}
   - component: {fileID: 4684476878985287444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,8 +518,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -776590613
+  m_SortingLayer: 6
   m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
