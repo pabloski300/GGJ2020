@@ -358,7 +358,7 @@ MonoBehaviour:
   carry_offset_x: 0.15
   drop_offset: 0.5
   timeToRepair: 1
-  repairAmount: 5
+  repairAmount: 10
   ammo_box: {fileID: 21300000, guid: 7b2bc75a74ecf054cb2025b348d1661b, type: 3}
   bulletsPerPackage: 10
   timeToLoad: 1

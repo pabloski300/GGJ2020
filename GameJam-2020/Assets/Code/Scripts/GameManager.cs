@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     private int turretAmount;
     [SerializeField, BoxGroup("Main Fields")]
     private Transform spawnPosition;
+        [SerializeField, BoxGroup("Main Fields")]
+    private GameObject toolBox;
+        [SerializeField, BoxGroup("Main Fields")]
+    private Transform toolBoxPosition;
 
     private Spawner spawner;
     private bool tutorial = true;
@@ -118,7 +122,7 @@ public class GameManager : MonoBehaviour
         {
             rechargeText.Hide();
         }
-
+    PlayGame();
     }
 
     public void PlayGame()
@@ -164,6 +168,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void RestartGame(){
+        toolBox.transform.parent = null;
+        toolBox.transform.position = toolBoxPosition.position;
         timeToWait = 0;
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         foreach(Enemy e in  enemies){

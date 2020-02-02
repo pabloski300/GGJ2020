@@ -154,6 +154,7 @@ public class PlayerController : MonoBehaviour, IDamage
         else if (repairing)
         {
             repairing = false;
+            repairSound.Stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             carrying_arm.gameObject.SetActive(true);
             body_animator.SetBool("Repairing", false);
             repair_counter = timeToRepair;
@@ -252,6 +253,7 @@ public class PlayerController : MonoBehaviour, IDamage
                 case item.repair_kit:
                     Debug.Log("Repairing Tower");
                     repairing = true;
+                    repairSound.Play(this.transform);
                     if (facing_left) body.GetComponent<SpriteRenderer>().flipX = true;
                     body_animator.SetBool("Repairing", true);
                     carrying_arm.gameObject.SetActive(false);
@@ -280,6 +282,7 @@ public class PlayerController : MonoBehaviour, IDamage
             if (t.HealthRelative == 1)
             {
                 repairing = false;
+                repairSound.Stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 carrying_arm.gameObject.SetActive(true);
                 body_animator.SetBool("Repairing", false);
             }
