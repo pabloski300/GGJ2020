@@ -42,6 +42,10 @@ public class GameManager : MonoBehaviour
             [BoxGroup("Sounds"), SerializeField]
     private Sound ambient;
 
+    
+            [BoxGroup("Sounds"), SerializeField]
+    private Sound main;
+
     private int enemyNumber = 0;
     private float timeToWait;
 
@@ -71,6 +75,8 @@ public class GameManager : MonoBehaviour
         spawner = FindObjectOfType<Spawner>();
         ambient.Init();
         ambient.Play(this.transform);
+        main.Init();
+        main.Play(this.transform);
         gameState = GameState.Menus;
     }
 

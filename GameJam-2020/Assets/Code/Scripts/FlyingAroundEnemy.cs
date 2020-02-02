@@ -80,7 +80,7 @@ public class FlyingAroundEnemy : Enemy
                 }
                 if (timeToNextShoot <= 0 && currentTarget != null && inGame)
                 {
-                    Shoot();
+                    this.ShootNew();
                 }
 
                 if (currentTarget != null)
@@ -92,11 +92,11 @@ public class FlyingAroundEnemy : Enemy
     }
 
 
-    public override void Shoot()
+    public void ShootNew()
     {
-        StartCoroutine(ShootMultiple());
         inShotTarget = this.currentTarget;
         inShoot = true;
+        StartCoroutine(ShootMultiple());
     }
 
     public IEnumerator ShootMultiple()
